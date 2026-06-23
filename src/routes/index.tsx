@@ -1,29 +1,361 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf } from "lucide-react";
+import { Section } from "../components/site/Section";
+import { PackageCard } from "../components/site/PackageCard";
+import { packages, reviews, faqs, whyUs } from "../lib/site-data";
+
+import heroLeopard from "../assets/hero-leopard.jpg";
+import leopardCub from "../assets/leopard-cub.jpg";
+import landscape from "../assets/landscape.jpg";
+import crocodile from "../assets/crocodile.jpg";
+import rabari from "../assets/rabari.jpg";
+import birds from "../assets/birds.jpg";
+import camp from "../assets/camp.jpg";
+import jeep from "../assets/safari-jeep.jpg";
+
+const imageMap: Record<string, string> = {
+  "hero-leopard": heroLeopard,
+  "leopard-cub": leopardCub,
+  landscape,
+};
+
+const galleryImages = [
+  { src: heroLeopard, alt: "Leopard at golden hour", span: "md:col-span-2 md:row-span-2" },
+  { src: rabari, alt: "Rabari shepherd" },
+  { src: birds, alt: "Flamingos at Jawai lake" },
+  { src: camp, alt: "Luxury tented camp under stars" },
+  { src: crocodile, alt: "Crocodile at sunset" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Wild Jawai Safari — Luxury Leopard Safaris in Rajasthan" },
+      { name: "description", content: "Private luxury safaris through the granite hills of Jawai. Track free-roaming leopards, sleep under stars, and meet the legendary Rabari shepherds." },
+      { property: "og:title", content: "Wild Jawai Safari — Luxury Leopard Safaris" },
+      { property: "og:description", content: "Private luxury safaris through the granite hills of Jawai." },
+      { property: "og:image", content: heroLeopard },
     ],
   }),
-  component: Index,
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+    <>
+      <Hero />
+      <PackagesPreview />
+      <WhyChooseUs />
+      <GalleryPreview />
+      <AboutPreview />
+      <Reviews />
+      <FAQPreview />
+      <ContactPreview />
+    </>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={heroLeopard}
+          alt="Leopard at golden hour in Jawai"
+          width={1920}
+          height={1280}
+          className="h-full w-full object-cover scale-105 animate-fade-in-slow"
+        />
+        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/20 to-transparent" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-32 pb-20 w-full">
+        <div className="max-w-2xl">
+          <div className="flex items-center gap-3 animate-fade-up">
+            <span className="gold-divider" />
+            <span className="eyebrow">Jawai · Rajasthan · India</span>
+          </div>
+          <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl leading-[0.95] animate-fade-up delay-1">
+            Where leopards
+            <br />
+            walk among <span className="text-gradient-gold italic">gods</span>.
+          </h1>
+          <p className="mt-7 text-base sm:text-lg text-foreground/85 max-w-xl leading-relaxed animate-fade-up delay-2">
+            Private, low-impact safaris through the granite kingdoms of Jawai —
+            home to India's most photographed wild leopards, sacred lakes and
+            the saffron-robed Rabari people.
+          </p>
+          <div className="mt-9 flex flex-wrap gap-3 animate-fade-up delay-3">
+            <Link to="/packages" className="btn-gold btn-gold-hover">
+              Explore Safaris <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/contact" className="btn-ghost-gold btn-ghost-gold-hover">
+              Plan Your Journey
+            </Link>
+          </div>
+
+          <dl className="mt-16 grid grid-cols-3 gap-6 max-w-lg animate-fade-up delay-4">
+            {[
+              { v: "70+", l: "Wild Leopards" },
+              { v: "95%", l: "Sighting Rate" },
+              { v: "12yr", l: "Local Expertise" },
+            ].map((s) => (
+              <div key={s.l}>
+                <dt className="font-display text-4xl text-gradient-gold">{s.v}</dt>
+                <dd className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.l}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-muted-foreground animate-float-slow">
+        <span className="eyebrow text-[0.55rem]">Scroll</span>
+        <span className="h-12 w-px bg-gradient-to-b from-gold/60 to-transparent" />
+      </div>
+    </section>
+  );
+}
+
+function PackagesPreview() {
+  return (
+    <Section
+      id="packages"
+      eyebrow="Curated Journeys"
+      title={<>Safaris crafted with <span className="italic text-gradient-gold">intention</span>.</>}
+      subtitle="Three signature itineraries — each privately guided, capped to small groups, and shaped around the rhythms of the wild."
+      center
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+      <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+        {packages.map((p) => (
+          <PackageCard key={p.slug} {...p} image={imageMap[p.image] ?? heroLeopard} />
+        ))}
+      </div>
+      <div className="mt-12 text-center">
+        <Link to="/packages" className="btn-ghost-gold btn-ghost-gold-hover">
+          View all packages <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </Section>
+  );
+}
+
+function WhyChooseUs() {
+  const icons = [Eye, Users, Leaf, Sparkles];
+  return (
+    <Section
+      eyebrow="Why Wild Jawai"
+      title={<>An experience held to the <span className="italic text-gradient-gold">highest standard</span>.</>}
+      center
+    >
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {whyUs.map((w, i) => {
+          const Icon = icons[i % icons.length];
+          return (
+            <div
+              key={w.title}
+              className="glass rounded-3xl p-7 hover:-translate-y-1 hover:border-gold/30 transition-all duration-500"
+            >
+              <span className="grid h-12 w-12 place-items-center rounded-2xl glass-gold">
+                <Icon className="h-5 w-5 text-gold" />
+              </span>
+              <h3 className="mt-5 font-display text-xl leading-tight">{w.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
+function GalleryPreview() {
+  return (
+    <Section
+      eyebrow="The Gallery"
+      title={<>Moments from the <span className="italic text-gradient-gold">granite kingdom</span>.</>}
+      center
+    >
+      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] sm:auto-rows-[220px] gap-3 sm:gap-4">
+        {galleryImages.map((g, i) => (
+          <div
+            key={i}
+            className={`relative overflow-hidden rounded-2xl group ${g.span ?? ""}`}
+          >
+            <img
+              src={g.src}
+              alt={g.alt}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+            />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+          </div>
+        ))}
+      </div>
+      <div className="mt-10 text-center">
+        <Link to="/gallery" className="btn-ghost-gold btn-ghost-gold-hover">
+          Open full gallery <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </Section>
+  );
+}
+
+function AboutPreview() {
+  return (
+    <Section eyebrow="About Jawai">
+      <div className="grid gap-12 lg:grid-cols-2 items-center">
+        <div className="relative">
+          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
+            <img src={landscape} alt="Granite hills of Jawai" loading="lazy" className="h-full w-full object-cover" />
+          </div>
+          <div className="absolute -bottom-8 -right-4 sm:-right-8 w-44 sm:w-56 aspect-square rounded-3xl overflow-hidden glass p-2 hidden md:block">
+            <img src={rabari} alt="Rabari elder" loading="lazy" className="h-full w-full object-cover rounded-2xl" />
+          </div>
+        </div>
+        <div>
+          <h2 className="font-display text-4xl sm:text-5xl leading-[1.05]">
+            A landscape <span className="italic text-gradient-gold">2,500 million</span> years in the making.
+          </h2>
+          <p className="mt-6 text-muted-foreground leading-relaxed">
+            Jawai's haunting granite hills are among the oldest exposed rocks on Earth.
+            Their caves shelter one of India's largest leopard populations — cats who share
+            their territory peacefully with the saffron-clad Rabari shepherds and their herds.
+          </p>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            For over 150 years, leopard and human have lived without conflict here. No fences,
+            no parks, no boundaries. Just respect, ritual and quiet coexistence.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/about" className="btn-gold btn-gold-hover">
+              Discover Jawai <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Reviews() {
+  return (
+    <Section
+      eyebrow="Guest Stories"
+      title={<>Whispered around <span className="italic text-gradient-gold">campfires</span>.</>}
+      center
+    >
+      <div className="grid gap-6 lg:grid-cols-3">
+        {reviews.map((r) => (
+          <figure key={r.name} className="glass rounded-3xl p-8 flex flex-col">
+            <div className="flex gap-1 text-gold">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-4 w-4 fill-current" />
+              ))}
+            </div>
+            <blockquote className="mt-5 text-foreground/90 leading-relaxed font-display text-lg italic">
+              "{r.quote}"
+            </blockquote>
+            <figcaption className="mt-6 pt-6 border-t border-white/5">
+              <div className="text-sm font-medium">{r.name}</div>
+              <div className="text-xs text-muted-foreground">{r.location}</div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function FAQPreview() {
+  return (
+    <Section
+      eyebrow="Frequently Asked"
+      title={<>Questions before the <span className="italic text-gradient-gold">first dawn drive</span>.</>}
+      center
+    >
+      <div className="max-w-3xl mx-auto">
+        <FAQList items={faqs.slice(0, 4)} />
+        <div className="mt-10 text-center">
+          <Link to="/faq" className="btn-ghost-gold btn-ghost-gold-hover">
+            All questions <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+export function FAQList({ items }: { items: ReadonlyArray<{ q: string; a: string }> }) {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <div className="space-y-3">
+      {items.map((f, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={f.q} className="glass rounded-2xl overflow-hidden">
+            <button
+              onClick={() => setOpen(isOpen ? null : i)}
+              className="w-full flex items-center justify-between gap-4 p-6 text-left"
+            >
+              <span className="font-display text-lg sm:text-xl">{f.q}</span>
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full glass-gold text-gold">
+                {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+              </span>
+            </button>
+            <div
+              className={`grid transition-all duration-500 ${
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <p className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
+  );
+}
+
+function ContactPreview() {
+  return (
+    <Section
+      eyebrow="Begin Your Journey"
+      title={<>Let's plan something <span className="italic text-gradient-gold">unforgettable</span>.</>}
+      center
+    >
+      <div className="relative overflow-hidden rounded-3xl glass p-1">
+        <div className="absolute inset-0 -z-10 opacity-30">
+          <img src={jeep} alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/40" />
+        </div>
+        <div className="p-8 sm:p-14 grid gap-10 lg:grid-cols-2 items-center">
+          <div>
+            <h3 className="font-display text-3xl sm:text-4xl leading-tight">
+              Your private safari, designed in conversation.
+            </h3>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Share your dates and we'll craft an itinerary around the lives of the leopards,
+              the season, and what stirs you most.
+            </p>
+            <ul className="mt-7 space-y-3 text-sm">
+              <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-gold" /> Jawai Bandh, Pali, Rajasthan 306126</li>
+              <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-gold" /> +91 98765 43210</li>
+              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-gold" /> hello@wildjawaisafari.com</li>
+            </ul>
+          </div>
+          <div>
+            <Link to="/contact" className="btn-gold btn-gold-hover w-full sm:w-auto">
+              Start Planning <ArrowRight className="h-4 w-4" />
+            </Link>
+            <p className="mt-4 text-xs text-muted-foreground">We reply within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </Section>
   );
 }
