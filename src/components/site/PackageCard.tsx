@@ -28,8 +28,8 @@ export function SafariZoneCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         <div className="absolute top-4 right-4 glass-gold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-          <IndianRupee className="h-3 w-3 text-gold" />
-          <span className="text-xs font-semibold text-gold-soft">{price}</span>
+          <IndianRupee className="h-3 w-3 text-foreground" />
+          <span className="text-xs font-semibold text-foreground">{price}</span>
         </div>
       </div>
       <div className="p-6 sm:p-7 flex flex-col flex-1">
