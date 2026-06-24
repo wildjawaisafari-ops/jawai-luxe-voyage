@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf } from "lucide-react";
 import { Section } from "../components/site/Section";
-import { PackageCard } from "../components/site/PackageCard";
-import { packages, reviews, faqs, whyUs } from "../lib/site-data";
+import { SafariZoneCard } from "../components/site/PackageCard";
+import { safariZones, reviews, faqs, whyUs } from "../lib/site-data";
 
 import heroLeopard from "../assets/hero-leopard.jpg";
 import leopardCub from "../assets/leopard-cub.jpg";
@@ -18,6 +18,9 @@ const imageMap: Record<string, string> = {
   "hero-leopard": heroLeopard,
   "leopard-cub": leopardCub,
   landscape,
+  crocodile,
+  birds,
+  "safari-jeep": jeep,
 };
 
 const galleryImages = [
@@ -123,19 +126,25 @@ function PackagesPreview() {
   return (
     <Section
       id="packages"
-      eyebrow="Curated Journeys"
-      title={<>Safaris crafted with <span className="italic text-gradient-gold">intention</span>.</>}
-      subtitle="Three signature itineraries — each privately guided, capped to small groups, and shaped around the rhythms of the wild."
+      eyebrow="Safari Zones"
+      title={<>Explore Jawai Safari <span className="italic text-gradient-gold">Zones</span></>}
+      subtitle="Choose your preferred safari zone and enjoy a private gypsy wildlife experience with local expert drivers and trackers."
       center
     >
-      <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-        {packages.map((p) => (
-          <PackageCard key={p.slug} {...p} image={imageMap[p.image] ?? heroLeopard} />
+      <div className="grid gap-6 sm:gap-7 md:grid-cols-2 lg:grid-cols-3">
+        {safariZones.map((z) => (
+          <SafariZoneCard key={z.slug} {...z} image={imageMap[z.image] ?? heroLeopard} />
         ))}
+      </div>
+      <div className="mt-10 text-center">
+        <p className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-2 text-sm text-gold-soft">
+          <span className="grid h-2 w-2 rounded-full bg-gold" />
+          All safaris are conducted in Private Gypsy. Every safari includes Hi-Tea (Tea + Light Snacks).
+        </p>
       </div>
       <div className="mt-12 text-center">
         <Link to="/packages" className="btn-ghost-gold btn-ghost-gold-hover">
-          View all packages <ArrowRight className="h-4 w-4" />
+          View all zones <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </Section>

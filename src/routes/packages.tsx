@@ -1,24 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "../components/site/Section";
-import { PackageCard } from "../components/site/PackageCard";
-import { packages } from "../lib/site-data";
+import { SafariZoneCard } from "../components/site/PackageCard";
+import { safariZones } from "../lib/site-data";
 import heroLeopard from "../assets/hero-leopard.jpg";
 import leopardCub from "../assets/leopard-cub.jpg";
 import landscape from "../assets/landscape.jpg";
+import crocodile from "../assets/crocodile.jpg";
+import birds from "../assets/birds.jpg";
+import jeep from "../assets/safari-jeep.jpg";
 
 const imageMap: Record<string, string> = {
   "hero-leopard": heroLeopard,
   "leopard-cub": leopardCub,
   landscape,
+  crocodile,
+  birds,
+  "safari-jeep": jeep,
 };
 
 export const Route = createFileRoute("/packages")({
   head: () => ({
     meta: [
-      { title: "Safari Packages — Wild Jawai Safari" },
-      { name: "description", content: "Private luxury safari itineraries in Jawai. From two-night leopard trails to seven-night photographer's residencies." },
-      { property: "og:title", content: "Safari Packages — Wild Jawai Safari" },
-      { property: "og:description", content: "Curated luxury safari itineraries through the granite hills of Jawai." },
+      { title: "Explore Jawai Safari Zones — Wild Jawai Safari" },
+      { name: "description", content: "Private gypsy safaris across six Jawai zones. Sunrise and sunset drives with expert local trackers, all with Hi-Tea included." },
+      { property: "og:title", content: "Explore Jawai Safari Zones — Wild Jawai Safari" },
+      { property: "og:description", content: "Private gypsy safaris across six Jawai zones with expert local trackers." },
       { property: "og:image", content: heroLeopard },
     ],
   }),
@@ -29,27 +35,22 @@ function PackagesPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Curated Safari Journeys"
-        title={<>The <span className="italic text-gradient-gold">Collection</span></>}
-        subtitle="Three signature journeys. Each privately guided, capped to intimate groups, and woven around the rhythms of the wild."
-        image={leopardCub}
+        eyebrow="Jawai Safari Zones"
+        title={<>Explore Jawai Safari <span className="italic text-gradient-gold">Zones</span></>}
+        subtitle="Choose your preferred safari zone and enjoy a private gypsy wildlife experience with local expert drivers and trackers."
+        image={heroLeopard}
       />
       <Section>
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {packages.map((p) => (
-            <PackageCard key={p.slug} {...p} image={imageMap[p.image] ?? heroLeopard} />
+        <div className="grid gap-6 sm:gap-7 md:grid-cols-2 xl:grid-cols-3">
+          {safariZones.map((z) => (
+            <SafariZoneCard key={z.slug} {...z} image={imageMap[z.image] ?? heroLeopard} />
           ))}
         </div>
-        <div className="mt-20 glass rounded-3xl p-10 sm:p-14 text-center">
-          <span className="eyebrow">Bespoke</span>
-          <h3 className="mt-4 font-display text-3xl sm:text-4xl">
-            Something more <span className="italic text-gradient-gold">tailored</span>?
-          </h3>
-          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            Honeymoons, milestone birthdays, conservation expeditions, family reunions —
-            we craft every detail privately. Speak with our journey designer.
+        <div className="mt-10 text-center">
+          <p className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-2 text-sm text-gold-soft">
+            <span className="grid h-2 w-2 rounded-full bg-gold" />
+            All safaris are conducted in Private Gypsy. Every safari includes Hi-Tea (Tea + Light Snacks).
           </p>
-          <a href="/contact" className="btn-gold btn-gold-hover mt-7">Design my safari</a>
         </div>
       </Section>
     </>
