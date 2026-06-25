@@ -1,3 +1,11 @@
+export const WHATSAPP_NUMBER = "918690122405";
+export const WHATSAPP_DISPLAY = "+91 86901 22405";
+export const CONTACT_EMAIL = "wildjawaisafari@gmail.com";
+
+export function whatsappUrl(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 export const safariZones = [
   {
     slug: "sena",
@@ -99,6 +107,33 @@ export const safariZones = [
   },
 ] as const;
 
+export const famousLeopards = [
+  { name: "Gabbar", title: "The Patriarch", desc: "A powerful dominant male who rules the Sena hills with quiet authority.", image: "gabbar" },
+  { name: "Laxmi", title: "The Mother", desc: "A graceful matriarch, mother to many of Jawai's celebrated cubs.", image: "laxmi" },
+  { name: "Chot Kaan", title: "The Scarred Wanderer", desc: "Recognised by a distinctive torn ear — one of the most photographed cats in Bera.", image: "chotkaan" },
+  { name: "Nilam", title: "The Watcher", desc: "A young, alert female often seen at dawn on the granite ridges of Jawai Dam.", image: "nilam" },
+  { name: "Padama", title: "The Silhouette", desc: "Famed for her sunset walks along the ridgelines above Jawai Bandh.", image: "padama" },
+  { name: "Sultan", title: "The King of Caves", desc: "A regal male who guards the ancient Shiva caves of the Sena range.", image: "sultan" },
+] as const;
+
+export const sacredPlaces = [
+  {
+    name: "Kameshwar Mahadev Temple",
+    desc: "A revered Shiva temple nestled within Jawai's ancient granite caves — a sacred site where pilgrims and leopards share the same hills.",
+    image: "kameshwar",
+  },
+  {
+    name: "Devagiri Temple",
+    desc: "A hilltop temple offering sweeping views over the Aravalli range, especially magical at sunrise and sunset.",
+    image: "devagiri",
+  },
+  {
+    name: "Ranakpur Jain Temple",
+    desc: "A 15th-century marvel of marble — 1,444 intricately carved pillars, no two alike. Among India's most exquisite temples.",
+    image: "ranakpur",
+  },
+] as const;
+
 export const reviews = [
   {
     quote:
@@ -130,8 +165,8 @@ export const faqs = [
     a: "Jawai is home to one of India's densest leopard populations outside protected reserves — over 70 individuals across roughly 19 sq km. On a 2-night stay, sighting rates are above 95%.",
   },
   {
-    q: "What is the accommodation like?",
-    a: "Our luxury tented camp features king beds, en-suite rain showers, copper bathtubs, private decks and personal butlers. Each tent faces the granite hills.",
+    q: "Do you provide pickup and drop?",
+    a: "Yes. We provide complimentary pickup and drop within 10 km from your hotel or location. Additional charges apply for distances beyond 10 km.",
   },
   {
     q: "Is Jawai suitable for families and children?",
@@ -143,7 +178,7 @@ export const faqs = [
   },
   {
     q: "Do you offer custom itineraries?",
-    a: "Yes. Every safari is privately guided. We can extend journeys into Udaipur, Jodhpur, Ranakpur and Kumbhalgarh, or combine with our Photographer's Residency.",
+    a: "Yes. Every safari is privately guided. We can extend journeys into Udaipur, Jodhpur, Ranakpur and Kumbhalgarh, and include nearby sacred sites in your itinerary.",
   },
 ] as const;
 
@@ -153,8 +188,8 @@ export const whyUs = [
     desc: "Our naturalists were born in the hills they guide. Every leopard, every cave, every shortcut — known by heart.",
   },
   {
-    title: "Just 8 Tents, Always Private",
-    desc: "We cap each departure to preserve the silence. Your jeep, your sundowner spot, your evening — uninterrupted.",
+    title: "Private Gypsy, Always",
+    desc: "Every safari is in a private gypsy — your jeep, your sundowner spot, your evening — uninterrupted.",
   },
   {
     title: "Ethical, Low-Impact Safaris",

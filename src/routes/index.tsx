@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf } from "lucide-react";
+import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark } from "lucide-react";
 import { Section } from "../components/site/Section";
 import { SafariZoneCard } from "../components/site/PackageCard";
-import { safariZones, reviews, faqs, whyUs } from "../lib/site-data";
+import { safariZones, reviews, faqs, whyUs, famousLeopards, sacredPlaces, whatsappUrl, WHATSAPP_DISPLAY, CONTACT_EMAIL } from "../lib/site-data";
 
 import heroLeopard from "../assets/hero-leopard.jpg";
 import leopardCub from "../assets/leopard-cub.jpg";
@@ -14,6 +14,19 @@ import birds from "../assets/birds.jpg";
 import camp from "../assets/camp.jpg";
 import jeep from "../assets/safari-jeep.jpg";
 
+import lGabbar from "../assets/leopard-gabbar.jpg";
+import lLaxmi from "../assets/leopard-laxmi.jpg";
+import lChot from "../assets/leopard-chotkaan.jpg";
+import lNilam from "../assets/leopard-nilam.jpg";
+import lPadama from "../assets/leopard-padama.jpg";
+import lSultan from "../assets/leopard-sultan.jpg";
+
+import tKameshwar from "../assets/temple-kameshwar.jpg";
+import tDevagiri from "../assets/temple-devagiri.jpg";
+import tRanakpur from "../assets/temple-ranakpur.jpg";
+
+import hotel from "../assets/hotel-resort.jpg";
+
 const imageMap: Record<string, string> = {
   "hero-leopard": heroLeopard,
   "leopard-cub": leopardCub,
@@ -21,6 +34,21 @@ const imageMap: Record<string, string> = {
   crocodile,
   birds,
   "safari-jeep": jeep,
+};
+
+const leopardImageMap: Record<string, string> = {
+  gabbar: lGabbar,
+  laxmi: lLaxmi,
+  chotkaan: lChot,
+  nilam: lNilam,
+  padama: lPadama,
+  sultan: lSultan,
+};
+
+const templeImageMap: Record<string, string> = {
+  kameshwar: tKameshwar,
+  devagiri: tDevagiri,
+  ranakpur: tRanakpur,
 };
 
 const galleryImages = [
@@ -35,7 +63,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Wild Jawai Safari — Luxury Leopard Safaris in Rajasthan" },
-      { name: "description", content: "Private luxury safaris through the granite hills of Jawai. Track free-roaming leopards, sleep under stars, and meet the legendary Rabari shepherds." },
+      { name: "description", content: "Private luxury safaris through the granite hills of Jawai. Track free-roaming leopards, visit sacred temples, and stay in the finest resorts." },
       { property: "og:title", content: "Wild Jawai Safari — Luxury Leopard Safaris" },
       { property: "og:description", content: "Private luxury safaris through the granite hills of Jawai." },
       { property: "og:image", content: heroLeopard },
@@ -49,7 +77,11 @@ function Home() {
     <>
       <Hero />
       <PackagesPreview />
+      <PickupDrop />
       <WhyChooseUs />
+      <FamousLeopards />
+      <SacredPlaces />
+      <HotelBooking />
       <GalleryPreview />
       <AboutPreview />
       <Reviews />
@@ -94,9 +126,14 @@ function Hero() {
             <Link to="/packages" className="btn-gold btn-gold-hover">
               Explore Safaris <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/contact" className="btn-ghost-gold btn-ghost-gold-hover">
-              Plan Your Journey
-            </Link>
+            <a
+              href={whatsappUrl("Hello Wild Jawai Safari, I would like to plan a journey.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost-gold btn-ghost-gold-hover"
+            >
+              <MessageCircle className="h-4 w-4" /> Plan on WhatsApp
+            </a>
           </div>
 
           <dl className="mt-16 grid grid-cols-3 gap-6 max-w-lg animate-fade-up delay-4">
@@ -151,6 +188,36 @@ function PackagesPreview() {
   );
 }
 
+function PickupDrop() {
+  return (
+    <Section>
+      <div className="glass rounded-3xl p-7 sm:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+        <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl glass-gold">
+          <Truck className="h-6 w-6 text-gold" />
+        </span>
+        <div className="flex-1 text-center md:text-left">
+          <div className="eyebrow">Pickup & Drop</div>
+          <h3 className="mt-3 font-display text-2xl sm:text-3xl leading-tight">
+            Complimentary within <span className="italic text-gradient-gold">10 km</span>.
+          </h3>
+          <p className="mt-3 text-sm text-foreground/80 leading-relaxed max-w-2xl">
+            We provide complimentary pickup and drop within 10 km from your hotel or location.
+            Additional charges apply for distances beyond 10 km.
+          </p>
+        </div>
+        <a
+          href={whatsappUrl("Hello Wild Jawai Safari, I have a question about pickup and drop.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost-gold btn-ghost-gold-hover whitespace-nowrap"
+        >
+          <MessageCircle className="h-4 w-4" /> Ask on WhatsApp
+        </a>
+      </div>
+    </Section>
+  );
+}
+
 function WhyChooseUs() {
   const icons = [Eye, Users, Leaf, Sparkles];
   return (
@@ -175,6 +242,143 @@ function WhyChooseUs() {
             </div>
           );
         })}
+      </div>
+    </Section>
+  );
+}
+
+function FamousLeopards() {
+  return (
+    <Section
+      eyebrow="The Cats of Jawai"
+      title={<>Meet Jawai's Famous <span className="italic text-gradient-gold">Leopards</span>.</>}
+      subtitle="Every leopard in Jawai has a name, a story and a territory passed down through generations. Here are some of the most beloved."
+      center
+    >
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {famousLeopards.map((l) => (
+          <article
+            key={l.name}
+            className="group relative overflow-hidden rounded-3xl glass aspect-[4/5] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-gold)]"
+          >
+            <img
+              src={leopardImageMap[l.image]}
+              alt={`${l.name} — ${l.title}`}
+              loading="lazy"
+              width={1024}
+              height={1280}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+              <div className="eyebrow text-[0.55rem]">{l.title}</div>
+              <h3 className="mt-2 font-display text-3xl text-gradient-gold">{l.name}</h3>
+              <p className="mt-2 text-sm text-foreground/80 leading-relaxed max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-500">
+                {l.desc}
+              </p>
+            </div>
+            <div className="absolute inset-0 ring-1 ring-inset ring-gold/0 group-hover:ring-gold/40 rounded-3xl transition-all duration-500" />
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function SacredPlaces() {
+  return (
+    <Section
+      eyebrow="Nearby Sacred Places"
+      title={<>Temples among the <span className="italic text-gradient-gold">granite gods</span>.</>}
+      subtitle="Guests can also include these sacred places in their tour itinerary — a soulful counterpoint to the wildlife of Jawai."
+      center
+    >
+      <div className="grid gap-6 md:grid-cols-3">
+        {sacredPlaces.map((p) => (
+          <article key={p.name} className="group glass rounded-3xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40">
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={templeImageMap[p.image]}
+                alt={p.name}
+                loading="lazy"
+                width={1024}
+                height={768}
+                className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <span className="absolute top-4 left-4 grid h-10 w-10 place-items-center rounded-full glass-gold">
+                <Landmark className="h-4 w-4 text-gold" />
+              </span>
+            </div>
+            <div className="p-6 sm:p-7 flex flex-col flex-1">
+              <h3 className="font-display text-2xl leading-tight">{p.name}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{p.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="mt-10 text-center">
+        <a
+          href={whatsappUrl("Hello, I would like to include nearby temples in my Jawai itinerary.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost-gold btn-ghost-gold-hover"
+        >
+          <MessageCircle className="h-4 w-4" /> Add temples to my itinerary
+        </a>
+      </div>
+    </Section>
+  );
+}
+
+function HotelBooking() {
+  return (
+    <Section eyebrow="Hospitality">
+      <div className="grid gap-10 lg:grid-cols-2 items-center">
+        <div className="relative order-2 lg:order-1">
+          <div className="aspect-[5/4] rounded-3xl overflow-hidden glass p-2">
+            <img
+              src={hotel}
+              alt="Luxury resort in Jawai at dusk"
+              loading="lazy"
+              width={1280}
+              height={1024}
+              className="h-full w-full object-cover rounded-2xl"
+            />
+          </div>
+        </div>
+        <div className="order-1 lg:order-2">
+          <span className="inline-flex items-center gap-2 glass-gold rounded-full px-3 py-1.5">
+            <Hotel className="h-4 w-4 text-gold" />
+            <span className="eyebrow text-[0.6rem]">Hotel & Resort Booking</span>
+          </span>
+          <h2 className="mt-5 font-display text-4xl sm:text-5xl leading-[1.05]">
+            Stay in Jawai's <span className="italic text-gradient-gold">finest resorts</span>.
+          </h2>
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            We help guests book the best hotels and luxury resorts in Jawai at the most
+            preferential available rates — from intimate tented camps to heritage estates.
+            Share your dates and we'll handle the rest.
+          </p>
+          <ul className="mt-6 space-y-2.5 text-sm">
+            {["Curated portfolio of vetted properties", "Best available rates & priority availability", "Concierge for transfers, dining & private experiences"].map((t) => (
+              <li key={t} className="flex items-start gap-2.5 text-foreground/85">
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            <a
+              href={whatsappUrl("Hello Wild Jawai Safari, I would like help booking a hotel or resort in Jawai.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold btn-gold-hover"
+            >
+              <MessageCircle className="h-4 w-4" /> Enquire on WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </Section>
   );
@@ -353,15 +557,23 @@ function ContactPreview() {
             </p>
             <ul className="mt-7 space-y-3 text-sm">
               <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-gold" /> Jawai Bandh, Pali, Rajasthan 306126</li>
-              <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-gold" /> +91 98765 43210</li>
-              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-gold" /> hello@wildjawaisafari.com</li>
+              <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-gold" /> {WHATSAPP_DISPLAY}</li>
+              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-gold" /> {CONTACT_EMAIL}</li>
             </ul>
           </div>
-          <div>
-            <Link to="/contact" className="btn-gold btn-gold-hover w-full sm:w-auto">
-              Start Planning <ArrowRight className="h-4 w-4" />
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <a
+              href={whatsappUrl("Hello Wild Jawai Safari, I would like to plan a safari.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold btn-gold-hover w-full sm:w-auto lg:w-full"
+            >
+              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+            </a>
+            <Link to="/contact" className="btn-ghost-gold btn-ghost-gold-hover w-full sm:w-auto lg:w-full">
+              Send detailed enquiry <ArrowRight className="h-4 w-4" />
             </Link>
-            <p className="mt-4 text-xs text-muted-foreground">We reply within 24 hours.</p>
+            <p className="mt-1 text-xs text-muted-foreground">We reply within minutes on WhatsApp.</p>
           </div>
         </div>
       </div>
