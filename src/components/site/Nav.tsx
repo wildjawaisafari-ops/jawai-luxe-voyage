@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
+import { whatsappUrl } from "../../lib/site-data";
 
 const links = [
   { to: "/", label: "Home" },
@@ -10,6 +11,8 @@ const links = [
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ] as const;
+
+const bookHref = whatsappUrl("Hello Wild Jawai Safari, I would like to book a safari.");
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -63,9 +66,9 @@ export function Nav() {
           </nav>
 
           <div className="hidden lg:block">
-            <Link to="/contact" className="btn-gold btn-gold-hover text-sm">
-              Book Safari
-            </Link>
+            <a href={bookHref} target="_blank" rel="noopener noreferrer" className="btn-gold btn-gold-hover text-sm">
+              <MessageCircle className="h-4 w-4" /> Book Safari
+            </a>
           </div>
 
           <button
@@ -91,13 +94,15 @@ export function Nav() {
                   {l.label}
                 </Link>
               ))}
-              <Link
-                to="/contact"
+              <a
+                href={bookHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="btn-gold btn-gold-hover text-sm mt-3"
               >
-                Book Safari
-              </Link>
+                <MessageCircle className="h-4 w-4" /> Book Safari
+              </a>
             </nav>
           </div>
         )}
