@@ -8,12 +8,14 @@ import crocodile from "../assets/crocodile.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Jawai — Wild Jawai Safari" },
-      { name: "description", content: "The story of Jawai — 2,500-million-year-old granite hills, free-roaming leopards, and the Rabari people who share their world with them." },
-      { property: "og:title", content: "About Jawai — Wild Jawai Safari" },
+      { title: "About Jawai Wildlife Safari — Leopard Hills of Rajasthan | Wild Jawai Safari" },
+      { name: "description", content: "About Jawai Wildlife Safari — 2,500-million-year-old granite hills, free-roaming leopards, and the Rabari people of Jawai, Rajasthan." },
+      { property: "og:title", content: "About Jawai Wildlife Safari — Wild Jawai Safari" },
       { property: "og:description", content: "Ancient granite hills, wild leopards and the Rabari people of Jawai." },
+      { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/about" },
       { property: "og:image", content: landscape },
     ],
+    links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/about" }],
   }),
   component: AboutPage,
 });
