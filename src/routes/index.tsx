@@ -62,12 +62,14 @@ const galleryImages = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Wild Jawai Safari — Luxury Leopard Safaris in Rajasthan" },
-      { name: "description", content: "Private luxury safaris through the granite hills of Jawai. Track free-roaming leopards, visit sacred temples, and stay in the finest resorts." },
-      { property: "og:title", content: "Wild Jawai Safari — Luxury Leopard Safaris" },
-      { property: "og:description", content: "Private luxury safaris through the granite hills of Jawai." },
+      { title: "Wild Jawai Safari — Jawai Leopard Safari Booking in Rajasthan" },
+      { name: "description", content: "Wild Jawai Safari — book a private leopard safari in Jawai, Rajasthan. Expert local trackers, sunrise & sunset gypsy safaris, Hi-Tea included, luxury resort booking." },
+      { property: "og:title", content: "Wild Jawai Safari — Luxury Leopard Safaris in Jawai" },
+      { property: "og:description", content: "Private luxury leopard safaris through the granite hills of Jawai, Rajasthan." },
+      { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/" },
       { property: "og:image", content: heroLeopard },
     ],
+    links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/" }],
   }),
   component: Home,
 });
@@ -173,10 +175,10 @@ function PackagesPreview() {
           <SafariZoneCard key={z.slug} {...z} image={imageMap[z.image] ?? heroLeopard} />
         ))}
       </div>
-      <div className="mt-10 text-center">
+      <div className="mt-10 flex flex-col items-center gap-3 text-center">
         <p className="inline-flex items-center gap-2 glass-gold rounded-full px-4 py-2 text-sm text-gold-soft">
           <span className="grid h-2 w-2 rounded-full bg-gold" />
-          All safaris are conducted in Private Gypsy. Every safari includes Hi-Tea (Tea + Light Snacks).
+          All safaris in Private Gypsy · ₹3,500 with Hi-Tea · ₹3,000 without Hi-Tea
         </p>
       </div>
       <div className="mt-12 text-center">

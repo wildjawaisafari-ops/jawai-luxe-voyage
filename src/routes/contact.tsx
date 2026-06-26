@@ -8,12 +8,14 @@ import { WHATSAPP_DISPLAY, CONTACT_EMAIL, whatsappUrl } from "../lib/site-data";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Wild Jawai Safari" },
-      { name: "description", content: "Plan your private luxury safari in Jawai. Chat with our journey designers on WhatsApp." },
+      { title: "Contact & Book Jawai Safari on WhatsApp | Wild Jawai Safari" },
+      { name: "description", content: "Contact Wild Jawai Safari to book a private leopard safari in Jawai. WhatsApp +91 92569 28266 · wildjawaisafari@gmail.com." },
       { property: "og:title", content: "Contact — Wild Jawai Safari" },
-      { property: "og:description", content: "Plan your private luxury safari in Jawai." },
+      { property: "og:description", content: "Plan your private luxury leopard safari in Jawai, Rajasthan." },
+      { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/contact" },
       { property: "og:image", content: jeep },
     ],
+    links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/contact" }],
   }),
   component: ContactPage,
 });

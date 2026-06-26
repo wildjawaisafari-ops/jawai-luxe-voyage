@@ -111,7 +111,7 @@ export function Footer() {
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full glass-gold">
                 <Phone className="h-4 w-4 text-gold" />
               </span>
-              <a href={`tel:+${"918690122405"}`} className="hover:text-gold transition-colors">{WHATSAPP_DISPLAY}</a>
+              <a href="tel:+919256928266" className="hover:text-gold transition-colors">{WHATSAPP_DISPLAY}</a>
             </li>
             <li className="flex items-start gap-3">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full glass-gold">
