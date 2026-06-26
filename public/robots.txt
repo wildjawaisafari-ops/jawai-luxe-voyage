@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://jawai-luxe-voyage.lovable.app/sitemap.xml

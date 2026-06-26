@@ -1,109 +1,73 @@
-export const WHATSAPP_NUMBER = "918690122405";
-export const WHATSAPP_DISPLAY = "+91 86901 22405";
+export const WHATSAPP_NUMBER = "919256928266";
+export const WHATSAPP_DISPLAY = "+91 92569 28266";
 export const CONTACT_EMAIL = "wildjawaisafari@gmail.com";
 
 export function whatsappUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+export const SAFARI_PRICE_WITH_HITEA = "₹3,500 per Gypsy";
+export const SAFARI_PRICE_WITHOUT_HITEA = "₹3,000 per Gypsy";
+
 export const safariZones = [
   {
     slug: "sena",
     name: "Sena Safari Zone",
     availability: "Sunrise Safari & Sunset Safari",
-    price: "₹3,000 Per Gypsy",
     highlights: [
       "High Leopard Sightings",
       "Granite Hills & Caves",
       "Bird Watching",
       "Seasonal Flamingos",
       "Wildlife Photography",
-      "Hi-Tea Included",
     ],
     buttonLabel: "Book Sena Safari",
-    bookingUrl: "https://wa.me/919256928266?text=I%20want%20to%20book%20Sena%20Safari%20Zone",
+    bookingUrl: whatsappUrl("I want to book Sena Safari Zone"),
     image: "hero-leopard",
   },
   {
-    slug: "maad",
-    name: "Maad Safari Zone",
+    slug: "jungle",
+    name: "Jungle Safari Zone",
     availability: "Sunrise Safari Only",
-    price: "₹3,500 Per Gypsy",
     highlights: [
       "Best Zone for Sloth Bear Sightings",
       "Leopard Sightings",
       "Sunrise Safari Experience",
       "Wildlife Photography",
-      "Hi-Tea Included",
     ],
-    buttonLabel: "Book Maad Safari",
-    bookingUrl: "https://wa.me/919256928266?text=I%20want%20to%20book%20Maad%20Safari%20Zone",
+    buttonLabel: "Book Jungle Safari",
+    bookingUrl: whatsappUrl("I want to book Jungle Safari Zone"),
     image: "leopard-cub",
   },
   {
-    slug: "bera",
-    name: "Bera Safari Zone",
+    slug: "bera-kothar-bisalpur",
+    name: "Bera, Kothar & Bisalpur Safari",
     availability: "Sunrise Safari & Sunset Safari",
-    price: "₹3,000 Per Gypsy",
     highlights: [
-      "Leopard Sightings",
-      "Rocky Landscape",
-      "Bird Watching",
-      "Sunset Safari Experience",
-      "Hi-Tea Included",
-    ],
-    buttonLabel: "Book Bera Safari",
-    bookingUrl: "https://wa.me/919256928266?text=I%20want%20to%20book%20Bera%20Safari%20Zone",
-    image: "landscape",
-  },
-  {
-    slug: "kothar-disalpur",
-    name: "Kothar Disalpur Safari Zone",
-    availability: "Sunrise Safari & Sunset Safari",
-    price: "₹3,000 Per Gypsy",
-    highlights: [
-      "Leopard Sightings",
+      "Leopard Sightings across three zones",
+      "Scenic Rocky Landscape",
       "Seasonal Flamingos",
       "Bird Watching",
-      "Scenic Rock Formations",
-      "Hi-Tea Included",
+      "Sunset Safari Experience",
     ],
-    buttonLabel: "Book Kothar Disalpur Safari",
-    bookingUrl: "https://wa.me/919256928266?text=I%20want%20to%20book%20Kothar%20Disalpur%20Safari",
-    image: "birds",
+    buttonLabel: "Book Bera, Kothar & Bisalpur Safari",
+    bookingUrl: whatsappUrl("I want to book Bera, Kothar & Bisalpur Safari"),
+    image: "hero-leopard",
   },
   {
     slug: "jawai-dam",
     name: "Jawai Dam Safari Zone",
     availability: "Sunrise Safari & Sunset Safari",
-    price: "₹2,500 Per Gypsy",
     highlights: [
       "Leopard Sightings",
       "Jawai Dam Views",
       "Crocodiles",
       "Flamingos & Migratory Birds",
       "Sunset Safari Experience",
-      "Hi-Tea Included",
     ],
     buttonLabel: "Book Jawai Dam Safari",
-    bookingUrl: "https://wa.me/919256928266?text=I%20want%20to%20book%20Jawai%20Dam%20Safari",
+    bookingUrl: whatsappUrl("I want to book Jawai Dam Safari"),
     image: "crocodile",
-  },
-  {
-    slug: "jivda",
-    name: "Jivda Safari Zone",
-    availability: "Sunrise Safari & Sunset Safari",
-    price: "₹3,000 Per Gypsy",
-    highlights: [
-      "Leopard Sightings",
-      "Bird Watching",
-      "Scenic Wildlife Trails",
-      "Nature Photography",
-      "Hi-Tea Included",
-    ],
-    buttonLabel: "Book Jivda Safari",
-    bookingUrl: "https://wa.me/919256928266?text=I%20want%20to%20book%20Jivda%20Safari",
-    image: "safari-jeep",
   },
 ] as const;
 
@@ -123,7 +87,7 @@ export const sacredPlaces = [
     image: "kameshwar",
   },
   {
-    name: "Devagiri Temple",
+    name: "Devgiri Temple",
     desc: "A hilltop temple offering sweeping views over the Aravalli range, especially magical at sunrise and sunset.",
     image: "devagiri",
   },
@@ -157,16 +121,20 @@ export const reviews = [
 
 export const faqs = [
   {
-    q: "When is the best time to visit Jawai?",
+    q: "When is the best time to visit Jawai for a leopard safari?",
     a: "Our season runs October through April. Leopard sightings peak in the cooler months from November to February when cats spend more time on exposed rocks at sunrise and sunset.",
   },
   {
-    q: "How likely are we to see a leopard?",
+    q: "How likely are we to see a leopard on a Jawai safari?",
     a: "Jawai is home to one of India's densest leopard populations outside protected reserves — over 70 individuals across roughly 19 sq km. On a 2-night stay, sighting rates are above 95%.",
   },
   {
-    q: "Do you provide pickup and drop?",
+    q: "Do you provide pickup and drop for the safari?",
     a: "Yes. We provide complimentary pickup and drop within 10 km from your hotel or location. Additional charges apply for distances beyond 10 km.",
+  },
+  {
+    q: "How much does a Jawai safari cost?",
+    a: "Every safari is conducted in a Private Gypsy. ₹3,500 per Gypsy with Hi-Tea (tea + light snacks) included, or ₹3,000 per Gypsy without Hi-Tea.",
   },
   {
     q: "Is Jawai suitable for families and children?",
@@ -177,8 +145,8 @@ export const faqs = [
     a: "The nearest airport is Udaipur (3 hours by road). Jawai Bandh railway station is on the property's doorstep, with direct trains from Delhi, Mumbai and Ahmedabad.",
   },
   {
-    q: "Do you offer custom itineraries?",
-    a: "Yes. Every safari is privately guided. We can extend journeys into Udaipur, Jodhpur, Ranakpur and Kumbhalgarh, and include nearby sacred sites in your itinerary.",
+    q: "Do you help with hotel and resort bookings in Jawai?",
+    a: "Yes. We arrange the best hotels and luxury resorts in Jawai at the most preferential available rates — from intimate tented camps to heritage estates.",
   },
 ] as const;
 
