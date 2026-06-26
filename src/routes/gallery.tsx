@@ -23,12 +23,14 @@ const images = [
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Wild Jawai Safari" },
-      { name: "description", content: "A visual journey through the wild leopards, sacred lakes and ancient granite hills of Jawai." },
-      { property: "og:title", content: "Gallery — Wild Jawai Safari" },
+      { title: "Jawai Leopard Safari Gallery — Photos of Wildlife & Landscape | Wild Jawai Safari" },
+      { name: "description", content: "Photos from Wild Jawai Safari — wild leopards, flamingos, crocodiles, granite hills and the Rabari shepherds of Jawai, Rajasthan." },
+      { property: "og:title", content: "Jawai Leopard Safari Gallery — Wild Jawai Safari" },
       { property: "og:description", content: "A visual journey through the wild leopards and granite hills of Jawai." },
+      { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/gallery" },
       { property: "og:image", content: heroLeopard },
     ],
+    links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/gallery" }],
   }),
   component: GalleryPage,
 });
