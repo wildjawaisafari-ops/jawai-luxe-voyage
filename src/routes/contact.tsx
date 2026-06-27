@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { MessageCircle, Mail, MapPin, Phone, Truck } from "lucide-react";
 import { PageHeader, Section } from "../components/site/Section";
-import photoGypsy from "../assets/safari-photoGypsy.jpg";
+import photoGypsy from "../assets/photo-gypsy.jpg";
 import { WHATSAPP_DISPLAY, CONTACT_EMAIL, whatsappUrl } from "../lib/site-data";
 
 export const Route = createFileRoute("/contact")({
