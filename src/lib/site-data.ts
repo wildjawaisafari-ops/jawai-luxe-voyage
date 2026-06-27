@@ -23,7 +23,7 @@ export const safariZones = [
     ],
     buttonLabel: "Book Sena Safari",
     bookingUrl: whatsappUrl("I want to book Sena Safari Zone"),
-    image: "hero-leopard",
+    image: "sena",
   },
   {
     slug: "jungle",
@@ -37,7 +37,7 @@ export const safariZones = [
     ],
     buttonLabel: "Book Jungle Safari",
     bookingUrl: whatsappUrl("I want to book Jungle Safari Zone"),
-    image: "leopard-cub",
+    image: "jungle",
   },
   {
     slug: "bera-kothar-bisalpur",
@@ -52,7 +52,7 @@ export const safariZones = [
     ],
     buttonLabel: "Book Bera, Kothar & Bisalpur Safari",
     bookingUrl: whatsappUrl("I want to book Bera, Kothar & Bisalpur Safari"),
-    image: "hero-leopard",
+    image: "bera",
   },
   {
     slug: "jawai-dam",
@@ -67,9 +67,10 @@ export const safariZones = [
     ],
     buttonLabel: "Book Jawai Dam Safari",
     bookingUrl: whatsappUrl("I want to book Jawai Dam Safari"),
-    image: "crocodile",
+    image: "jawai-dam",
   },
 ] as const;
+
 
 export const famousLeopards = [
   { name: "Gabbar", title: "The Patriarch", desc: "A powerful dominant male who rules the Sena hills with quiet authority.", image: "gabbar" },

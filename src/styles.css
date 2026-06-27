@@ -43,51 +43,52 @@
 :root {
   --radius: 0.5rem;
 
-  /* Warm charcoal base instead of pure black */
-  --background: oklch(0.20 0.014 60);
-  --foreground: oklch(0.97 0.012 85);
-  --ink: oklch(0.13 0.012 60);
+  /* Lighter warm charcoal — earthy, premium, not pitch black */
+  --background: oklch(0.245 0.018 65);
+  --foreground: oklch(0.975 0.014 85);
+  --ink: oklch(0.16 0.014 60);
 
-  /* Earthy card surfaces */
-  --card: oklch(0.24 0.018 65);
-  --card-foreground: oklch(0.97 0.012 85);
-  --popover: oklch(0.24 0.018 65);
-  --popover-foreground: oklch(0.97 0.012 85);
+  /* Earthy card surfaces — slightly elevated for contrast */
+  --card: oklch(0.30 0.022 68);
+  --card-foreground: oklch(0.975 0.014 85);
+  --popover: oklch(0.30 0.022 68);
+  --popover-foreground: oklch(0.975 0.014 85);
 
-  /* Refined gold */
-  --primary: oklch(0.80 0.13 85);
-  --primary-foreground: oklch(0.16 0.012 60);
-  --gold: oklch(0.80 0.13 85);
-  --gold-soft: oklch(0.88 0.10 88);
-  --gold-deep: oklch(0.58 0.11 75);
+  /* Refined warm gold */
+  --primary: oklch(0.82 0.135 85);
+  --primary-foreground: oklch(0.16 0.014 60);
+  --gold: oklch(0.82 0.135 85);
+  --gold-soft: oklch(0.90 0.10 88);
+  --gold-deep: oklch(0.60 0.115 75);
 
-  /* New palette: olive, sand, earthy brown */
-  --olive: oklch(0.55 0.07 115);
-  --sand: oklch(0.85 0.05 80);
-  --earth: oklch(0.36 0.038 55);
+  /* Earthy palette: olive, sand, warm brown */
+  --olive: oklch(0.58 0.075 115);
+  --sand: oklch(0.88 0.055 80);
+  --earth: oklch(0.40 0.042 55);
 
-  --secondary: oklch(0.28 0.018 65);
-  --secondary-foreground: oklch(0.97 0.012 85);
-  --muted: oklch(0.26 0.014 65);
-  --muted-foreground: oklch(0.78 0.018 80);
-  --accent: oklch(0.80 0.13 85);
-  --accent-foreground: oklch(0.16 0.012 60);
+  --secondary: oklch(0.34 0.022 68);
+  --secondary-foreground: oklch(0.975 0.014 85);
+  --muted: oklch(0.32 0.018 68);
+  --muted-foreground: oklch(0.82 0.022 82);
+  --accent: oklch(0.82 0.135 85);
+  --accent-foreground: oklch(0.16 0.014 60);
 
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.80 0.13 85 / 60%);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.82 0.135 85 / 60%);
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.10 88) 0%, oklch(0.80 0.13 85) 50%, oklch(0.58 0.11 75) 100%);
-  --gradient-radial-glow: radial-gradient(ellipse at top, oklch(0.80 0.13 85 / 0.18), transparent 60%);
-  --gradient-hero: linear-gradient(180deg, oklch(0.13 0.012 60 / 0.35) 0%, oklch(0.16 0.014 60 / 0.55) 50%, oklch(0.20 0.014 60 / 0.95) 100%);
-  --gradient-earth: linear-gradient(180deg, oklch(0.22 0.018 60) 0%, oklch(0.26 0.022 70) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.92 0.10 88) 0%, oklch(0.82 0.135 85) 50%, oklch(0.60 0.115 75) 100%);
+  --gradient-radial-glow: radial-gradient(ellipse at top, oklch(0.82 0.135 85 / 0.22), transparent 60%);
+  --gradient-hero: linear-gradient(180deg, oklch(0.16 0.014 60 / 0.30) 0%, oklch(0.20 0.016 60 / 0.50) 55%, oklch(0.245 0.018 65 / 0.95) 100%);
+  --gradient-earth: linear-gradient(180deg, oklch(0.28 0.022 60) 0%, oklch(0.34 0.026 70) 100%);
 
-  --shadow-gold: 0 20px 60px -20px oklch(0.80 0.13 85 / 0.45);
-  --shadow-glass: 0 10px 40px -10px oklch(0.06 0.01 60 / 0.6);
+  --shadow-gold: 0 22px 60px -20px oklch(0.82 0.135 85 / 0.45);
+  --shadow-glass: 0 14px 44px -12px oklch(0.10 0.012 60 / 0.55);
 }
+
 
 .dark { color-scheme: dark; }
 
@@ -99,11 +100,12 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    /* Layered earthy gradients — olive + sand + gold haze */
+    /* Brighter layered earthy gradients — sand top, olive corner, warm gold haze */
     background-image:
-      radial-gradient(ellipse 90% 55% at 50% -10%, oklch(0.80 0.13 85 / 0.10), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 100% 100%, oklch(0.55 0.07 115 / 0.10), transparent 70%),
-      radial-gradient(ellipse 60% 45% at 0% 50%, oklch(0.36 0.038 55 / 0.18), transparent 75%);
+      radial-gradient(ellipse 95% 60% at 50% -10%, oklch(0.88 0.055 80 / 0.12), transparent 65%),
+      radial-gradient(ellipse 70% 50% at 100% 100%, oklch(0.58 0.075 115 / 0.14), transparent 70%),
+      radial-gradient(ellipse 65% 50% at 0% 40%, oklch(0.40 0.042 55 / 0.22), transparent 75%),
+      linear-gradient(180deg, oklch(0.265 0.020 70) 0%, oklch(0.235 0.018 62) 100%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4, .font-display {

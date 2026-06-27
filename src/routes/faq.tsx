@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "../components/site/Section";
 import { FAQList } from "./index";
 import { faqs } from "../lib/site-data";
-import camp from "../assets/camp.jpg";
+import photoHero from "../assets/photo-hero.jpg";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/faq")({
       { property: "og:title", content: "Jawai Safari FAQ — Wild Jawai Safari" },
       { property: "og:description", content: "Everything you need to know before booking a leopard safari in Jawai, Rajasthan." },
       { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/faq" },
-      { property: "og:image", content: camp },
+      { property: "og:image", content: photoHero },
     ],
     links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/faq" }],
     scripts: [
@@ -40,7 +40,7 @@ function FAQPage() {
         eyebrow="Before You Travel"
         title={<>The <span className="italic text-gradient-gold">essentials</span></>}
         subtitle="Common questions answered. If something else is on your mind, our concierge replies within 24 hours."
-        image={camp}
+        image={photoHero}
       />
       <Section>
         <div className="max-w-3xl mx-auto">

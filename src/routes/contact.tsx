@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { MessageCircle, Mail, MapPin, Phone, Truck } from "lucide-react";
 import { PageHeader, Section } from "../components/site/Section";
-import jeep from "../assets/safari-jeep.jpg";
+import photoGypsy from "../assets/photo-gypsy.jpg";
 import { WHATSAPP_DISPLAY, CONTACT_EMAIL, whatsappUrl } from "../lib/site-data";
 
 export const Route = createFileRoute("/contact")({
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact — Wild Jawai Safari" },
       { property: "og:description", content: "Plan your private luxury leopard safari in Jawai, Rajasthan." },
       { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/contact" },
-      { property: "og:image", content: jeep },
+      { property: "og:image", content: photoGypsy },
     ],
     links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/contact" }],
   }),
@@ -55,7 +55,7 @@ function ContactPage() {
         eyebrow="Begin Your Journey"
         title={<>Plan your <span className="italic text-gradient-gold">safari</span></>}
         subtitle="Tell us about your dream journey. Submitting the form opens WhatsApp so we can reply instantly."
-        image={jeep}
+        image={photoGypsy}
       />
       <Section>
         <div className="grid gap-10 lg:grid-cols-5">

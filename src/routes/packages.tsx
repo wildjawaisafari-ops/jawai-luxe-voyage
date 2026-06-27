@@ -2,20 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "../components/site/Section";
 import { SafariZoneCard } from "../components/site/PackageCard";
 import { safariZones, SAFARI_PRICE_WITH_HITEA, SAFARI_PRICE_WITHOUT_HITEA } from "../lib/site-data";
-import heroLeopard from "../assets/hero-leopard.jpg";
-import leopardCub from "../assets/leopard-cub.jpg";
-import landscape from "../assets/landscape.jpg";
-import crocodile from "../assets/crocodile.jpg";
-import birds from "../assets/birds.jpg";
-import jeep from "../assets/safari-jeep.jpg";
+import photoHero from "../assets/photo-hero.jpg";
+import photoSena from "../assets/photo-sena.jpg";
+import photoJungle from "../assets/photo-jungle.jpg";
+import photoBera from "../assets/photo-bera.jpg";
+import photoJawaiDam from "../assets/photo-jawai-dam.jpg";
 
 const imageMap: Record<string, string> = {
-  "hero-leopard": heroLeopard,
-  "leopard-cub": leopardCub,
-  landscape,
-  crocodile,
-  birds,
-  "safari-jeep": jeep,
+  sena: photoSena,
+  jungle: photoJungle,
+  bera: photoBera,
+  "jawai-dam": photoJawaiDam,
 };
 
 export const Route = createFileRoute("/packages")({
@@ -26,7 +23,7 @@ export const Route = createFileRoute("/packages")({
       { property: "og:title", content: "Jawai Safari Booking — Leopard Safari Packages" },
       { property: "og:description", content: "Private gypsy leopard safaris across Jawai's premier zones with expert local trackers." },
       { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/packages" },
-      { property: "og:image", content: heroLeopard },
+      { property: "og:image", content: photoHero },
     ],
     links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/packages" }],
     scripts: [
@@ -62,12 +59,12 @@ function PackagesPage() {
         eyebrow="Jawai Safari Zones"
         title={<>Explore Jawai Safari <span className="italic text-gradient-gold">Zones</span></>}
         subtitle="Choose your preferred safari zone and enjoy a private gypsy wildlife experience with local expert drivers and trackers."
-        image={heroLeopard}
+        image={photoHero}
       />
       <Section>
         <div className="grid gap-6 sm:gap-7 md:grid-cols-2 xl:grid-cols-3">
           {safariZones.map((z) => (
-            <SafariZoneCard key={z.slug} {...z} image={imageMap[z.image] ?? heroLeopard} />
+            <SafariZoneCard key={z.slug} {...z} image={imageMap[z.image] ?? photoHero} />
           ))}
         </div>
         <div className="mt-10 flex flex-col items-center gap-3 text-center">
