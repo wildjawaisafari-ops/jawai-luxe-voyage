@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "../components/site/Section";
 import { FAQList } from "./index";
 import { faqs } from "../lib/site-data";
-import camp from "../assets/camp.jpg";
+import photoHero from "../assets/photo-hero.jpg";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
