@@ -1,62 +1,43 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark } from "lucide-react";
+import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark, Cat } from "lucide-react";
 import { Section } from "../components/site/Section";
 import { SafariZoneCard } from "../components/site/PackageCard";
 import { safariZones, reviews, faqs, whyUs, famousLeopards, sacredPlaces, whatsappUrl, WHATSAPP_DISPLAY, CONTACT_EMAIL } from "../lib/site-data";
 
-import heroLeopard from "../assets/hero-leopard.jpg";
-import leopardCub from "../assets/leopard-cub.jpg";
-import landscape from "../assets/landscape.jpg";
-import crocodile from "../assets/crocodile.jpg";
-import rabari from "../assets/rabari.jpg";
-import birds from "../assets/birds.jpg";
-import camp from "../assets/camp.jpg";
-import jeep from "../assets/safari-jeep.jpg";
-
-import lGabbar from "../assets/leopard-gabbar.jpg";
-import lLaxmi from "../assets/leopard-laxmi.jpg";
-import lChot from "../assets/leopard-chotkaan.jpg";
-import lNilam from "../assets/leopard-nilam.jpg";
-import lPadama from "../assets/leopard-padama.jpg";
-import lSultan from "../assets/leopard-sultan.jpg";
-
-import tKameshwar from "../assets/temple-kameshwar.jpg";
-import tDevagiri from "../assets/temple-devagiri.jpg";
-import tRanakpur from "../assets/temple-ranakpur.jpg";
-
-import hotel from "../assets/hotel-resort.jpg";
+import photoHero from "../assets/photo-hero.jpg";
+import photoSena from "../assets/photo-sena.jpg";
+import photoJungle from "../assets/photo-jungle.jpg";
+import photoBera from "../assets/photo-bera.jpg";
+import photoJawaiDam from "../assets/photo-jawai-dam.jpg";
+import photoCrocodile from "../assets/photo-crocodile.jpg";
+import photoGypsy from "../assets/photo-gypsy.jpg";
+import photoHiTea from "../assets/photo-hitea.jpg";
+import photoHiTeaLake from "../assets/photo-hitea-lake.jpg";
+import photoBoat from "../assets/photo-boat.jpg";
+import photoKameshwar from "../assets/photo-kameshwar.jpg";
+import photoDevgiri from "../assets/photo-devgiri.jpg";
+import photoBhadreshvar from "../assets/photo-bhadreshvar.jpg";
 
 const imageMap: Record<string, string> = {
-  "hero-leopard": heroLeopard,
-  "leopard-cub": leopardCub,
-  landscape,
-  crocodile,
-  birds,
-  "safari-jeep": jeep,
-};
-
-const leopardImageMap: Record<string, string> = {
-  gabbar: lGabbar,
-  laxmi: lLaxmi,
-  chotkaan: lChot,
-  nilam: lNilam,
-  padama: lPadama,
-  sultan: lSultan,
+  sena: photoSena,
+  jungle: photoJungle,
+  bera: photoBera,
+  "jawai-dam": photoJawaiDam,
 };
 
 const templeImageMap: Record<string, string> = {
-  kameshwar: tKameshwar,
-  devagiri: tDevagiri,
-  ranakpur: tRanakpur,
+  kameshwar: photoKameshwar,
+  devagiri: photoDevgiri,
+  ranakpur: photoBhadreshvar,
 };
 
 const galleryImages = [
-  { src: heroLeopard, alt: "Leopard at golden hour", span: "md:col-span-2 md:row-span-2" },
-  { src: rabari, alt: "Rabari shepherd" },
-  { src: birds, alt: "Flamingos at Jawai lake" },
-  { src: camp, alt: "Luxury tented camp under stars" },
-  { src: crocodile, alt: "Crocodile at sunset" },
+  { src: photoHero, alt: "Safari gypsy at Jawai lake", span: "md:col-span-2 md:row-span-2" },
+  { src: photoHiTeaLake, alt: "Hi-Tea by Jawai lake" },
+  { src: photoJungle, alt: "Rabari shepherd herding goats at sunset" },
+  { src: photoBera, alt: "Flamingos on Jawai waters" },
+  { src: photoCrocodile, alt: "Mugger crocodile in Jawai dam" },
 ];
 
 export const Route = createFileRoute("/")({
@@ -67,7 +48,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Wild Jawai Safari — Luxury Leopard Safaris in Jawai" },
       { property: "og:description", content: "Private luxury leopard safaris through the granite hills of Jawai, Rajasthan." },
       { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/" },
-      { property: "og:image", content: heroLeopard },
+      { property: "og:image", content: photoHero },
     ],
     links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/" }],
   }),
@@ -98,14 +79,14 @@ function Hero() {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img
-          src={heroLeopard}
-          alt="Leopard at golden hour in Jawai"
+          src={photoHero}
+          alt="Safari gypsy parked on granite shore of Jawai lake at golden hour"
           width={1920}
           height={1280}
           className="h-full w-full object-cover scale-105 animate-fade-in-slow"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-32 pb-20 w-full">
@@ -172,7 +153,7 @@ function PackagesPreview() {
     >
       <div className="grid gap-6 sm:gap-7 md:grid-cols-2 lg:grid-cols-3">
         {safariZones.map((z) => (
-          <SafariZoneCard key={z.slug} {...z} image={imageMap[z.image] ?? heroLeopard} />
+          <SafariZoneCard key={z.slug} {...z} image={imageMap[z.image] ?? photoHero} />
         ))}
       </div>
       <div className="mt-10 flex flex-col items-center gap-3 text-center">
@@ -261,25 +242,17 @@ function FamousLeopards() {
         {famousLeopards.map((l) => (
           <article
             key={l.name}
-            className="group relative overflow-hidden rounded-3xl glass aspect-[4/5] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-gold)]"
+            className="group relative overflow-hidden rounded-3xl glass-earth p-7 sm:p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-[var(--shadow-gold)]"
           >
-            <img
-              src={leopardImageMap[l.image]}
-              alt={`${l.name} — ${l.title}`}
-              loading="lazy"
-              width={1024}
-              height={1280}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-              <div className="eyebrow text-[0.55rem]">{l.title}</div>
-              <h3 className="mt-2 font-display text-3xl text-gradient-gold">{l.name}</h3>
-              <p className="mt-2 text-sm text-foreground/80 leading-relaxed max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-500">
-                {l.desc}
-              </p>
+            <div className="flex items-start justify-between gap-4">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl glass-gold">
+                <Cat className="h-5 w-5 text-gold" />
+              </span>
+              <span className="eyebrow text-[0.55rem] text-right">{l.title}</span>
             </div>
-            <div className="absolute inset-0 ring-1 ring-inset ring-gold/0 group-hover:ring-gold/40 rounded-3xl transition-all duration-500" />
+            <h3 className="mt-6 font-display text-3xl sm:text-4xl text-gradient-gold">{l.name}</h3>
+            <div className="mt-3 h-px w-12 bg-gradient-to-r from-gold/70 to-transparent" />
+            <p className="mt-4 text-sm text-foreground/80 leading-relaxed">{l.desc}</p>
           </article>
         ))}
       </div>
@@ -307,7 +280,7 @@ function SacredPlaces() {
                 height={768}
                 className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <span className="absolute top-4 left-4 grid h-10 w-10 place-items-center rounded-full glass-gold">
                 <Landmark className="h-4 w-4 text-gold" />
               </span>
@@ -340,8 +313,8 @@ function HotelBooking() {
         <div className="relative order-2 lg:order-1">
           <div className="aspect-[5/4] rounded-3xl overflow-hidden glass p-2">
             <img
-              src={hotel}
-              alt="Luxury resort in Jawai at dusk"
+              src={photoHiTeaLake}
+              alt="Luxury Hi-Tea experience by Jawai dam"
               loading="lazy"
               width={1280}
               height={1024}
@@ -406,7 +379,7 @@ function GalleryPreview() {
               className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
             />
             <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity" />
           </div>
         ))}
       </div>
@@ -425,10 +398,10 @@ function AboutPreview() {
       <div className="grid gap-12 lg:grid-cols-2 items-center">
         <div className="relative">
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
-            <img src={landscape} alt="Granite hills of Jawai" loading="lazy" className="h-full w-full object-cover" />
+            <img src={photoJawaiDam} alt="Aerial view of Jawai dam and granite hills" loading="lazy" className="h-full w-full object-cover" />
           </div>
           <div className="absolute -bottom-8 -right-4 sm:-right-8 w-44 sm:w-56 aspect-square rounded-3xl overflow-hidden glass p-2 hidden md:block">
-            <img src={rabari} alt="Rabari elder" loading="lazy" className="h-full w-full object-cover rounded-2xl" />
+            <img src={photoJungle} alt="Rabari shepherd with herd at sunset" loading="lazy" className="h-full w-full object-cover rounded-2xl" />
           </div>
         </div>
         <div>
@@ -545,7 +518,7 @@ function ContactPreview() {
     >
       <div className="relative overflow-hidden rounded-3xl glass p-1">
         <div className="absolute inset-0 -z-10 opacity-30">
-          <img src={jeep} alt="" className="h-full w-full object-cover" />
+          <img src={photoGypsy} alt="" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/40" />
         </div>
         <div className="p-8 sm:p-14 grid gap-10 lg:grid-cols-2 items-center">
@@ -582,3 +555,6 @@ function ContactPreview() {
     </Section>
   );
 }
+
+// suppress unused warnings for images reserved for future sections
+void photoHiTea; void photoBoat;
