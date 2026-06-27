@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "../components/site/Section";
-import landscape from "../assets/landscape.jpg";
-import rabari from "../assets/rabari.jpg";
-import birds from "../assets/birds.jpg";
-import crocodile from "../assets/crocodile.jpg";
+import photoJawaiDam from "../assets/photo-jawai-dam.jpg";
+import photoJungle from "../assets/photo-jungle.jpg";
+import photoBera from "../assets/photo-bera.jpg";
+import photoCrocodile from "../assets/photo-crocodile.jpg";
+import photoKameshwar from "../assets/photo-kameshwar.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Jawai Wildlife Safari — Wild Jawai Safari" },
       { property: "og:description", content: "Ancient granite hills, wild leopards and the Rabari people of Jawai." },
       { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/about" },
-      { property: "og:image", content: landscape },
+      { property: "og:image", content: photoJawaiDam },
     ],
     links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/about" }],
   }),
@@ -27,7 +28,7 @@ function AboutPage() {
         eyebrow="The Land · The People · The Cats"
         title={<>A place where <span className="italic text-gradient-gold">myth</span> still walks</>}
         subtitle="Jawai is no reserve, no park. It is a living landscape — wild leopards, sacred caves, and herders whose ancestors blessed these cats centuries ago."
-        image={landscape}
+        image={photoJawaiDam}
       />
 
       <Section>
@@ -48,8 +49,8 @@ function AboutPage() {
             </p>
           </div>
           <div className="lg:col-span-5 grid grid-cols-2 gap-3">
-            <img src={rabari} alt="Rabari elder" loading="lazy" className="rounded-2xl aspect-[3/4] object-cover" />
-            <img src={birds} alt="Flamingos on the lake" loading="lazy" className="rounded-2xl aspect-[3/4] object-cover mt-10" />
+            <img src={photoJungle} alt="Rabari shepherd herding goats at sunset in Jawai" loading="lazy" className="rounded-2xl aspect-[3/4] object-cover" />
+            <img src={photoBera} alt="Flamingos on Jawai lake" loading="lazy" className="rounded-2xl aspect-[3/4] object-cover mt-10" />
           </div>
         </div>
       </Section>
@@ -60,7 +61,7 @@ function AboutPage() {
       >
         <div className="grid gap-10 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6">
-            <img src={rabari} alt="Rabari herder" loading="lazy" className="rounded-3xl aspect-[4/5] object-cover" />
+            <img src={photoJungle} alt="Rabari herder with goats at sunset" loading="lazy" className="rounded-3xl aspect-[4/5] object-cover w-full" />
           </div>
           <div className="lg:col-span-6 space-y-5">
             <p className="text-muted-foreground leading-relaxed">
@@ -91,9 +92,9 @@ function AboutPage() {
       >
         <div className="grid gap-5 sm:grid-cols-3">
           {[
-            { img: crocodile, t: "Mugger crocodiles", d: "One of India's largest populations of marsh crocodiles, sunning the rocky shores of Jawai Bandh." },
-            { img: birds, t: "Migratory birdlife", d: "Over 100 species — flamingos, bar-headed geese, sarus cranes — winter on these waters." },
-            { img: landscape, t: "Sacred caves", d: "1,000-year-old Shiva shrines inside the boulder caves, still venerated by Rabari pilgrims." },
+            { img: photoCrocodile, t: "Mugger crocodiles", d: "One of India's largest populations of marsh crocodiles, sunning the rocky shores of Jawai Bandh." },
+            { img: photoBera, t: "Migratory birdlife", d: "Over 100 species — flamingos, bar-headed geese, sarus cranes — winter on these waters." },
+            { img: photoKameshwar, t: "Sacred caves", d: "Ancient Shiva shrines inside the boulder caves, still venerated by Rabari pilgrims." },
           ].map((c) => (
             <article key={c.t} className="glass rounded-3xl overflow-hidden">
               <div className="aspect-[4/3] overflow-hidden">
