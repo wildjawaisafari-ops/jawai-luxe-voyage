@@ -1,19 +1,24 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Mail, Phone, MapPin, MessageCircle, Sunrise } from "lucide-react";
 import { WHATSAPP_DISPLAY, CONTACT_EMAIL, whatsappUrl } from "../../lib/site-data";
+import photoJawaiDam from "../../assets/photo-jawai-dam.jpg";
 
 export function Footer() {
   return (
-    <footer className="relative mt-32">
+    <footer className="relative mt-32 overflow-hidden">
       {/* Top luminous divider */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent" />
-      {/* Ambient glow */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
+      {/* Background landscape — subtle */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20">
+        <img src={photoJawaiDam} alt="" className="h-full w-full object-cover opacity-[0.10]" />
+      </div>
+      {/* Ambient gold + olive glow */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 50% 0%, oklch(0.78 0.13 85 / 0.10), transparent 60%), radial-gradient(ellipse 50% 50% at 10% 100%, oklch(0.78 0.13 85 / 0.06), transparent 70%)",
+            "radial-gradient(ellipse 70% 60% at 50% 0%, oklch(0.82 0.135 85 / 0.16), transparent 60%), radial-gradient(ellipse 50% 50% at 8% 100%, oklch(0.58 0.075 115 / 0.18), transparent 70%), linear-gradient(180deg, oklch(0.235 0.018 62 / 0.85) 0%, oklch(0.20 0.016 60 / 0.96) 100%)",
         }}
       />
 
