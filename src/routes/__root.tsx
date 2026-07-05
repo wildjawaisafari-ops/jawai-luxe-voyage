@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Private gypsy leopard safaris in Jawai with expert local trackers. Book on WhatsApp." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/T6Kv3FD9qyMWd32aoBfSAkvjNv32/social-images/social-1782317848847-ChatGPT_Image_Jun_24,_2026,_07_06_44_PM.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/T6Kv3FD9qyMWd32aoBfSAkvjNv32/social-images/social-1782317848847-ChatGPT_Image_Jun_24,_2026,_07_06_44_PM.webp" },
-      { name: "theme-color", content: "#1a1612" },
+      { name: "theme-color", content: "#F8F5EF" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
