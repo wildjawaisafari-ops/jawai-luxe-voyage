@@ -38,7 +38,7 @@ export function Nav() {
       >
         <div
           className={`flex items-center justify-between rounded-full px-4 sm:px-6 py-3 transition-all duration-500 ${
-            scrolled ? "glass" : "bg-transparent border border-transparent"
+            scrolled ? "glass-nav" : "bg-transparent border border-transparent"
           }`}
         >
           <Link to="/" className="flex items-center gap-2 group">
@@ -72,7 +72,7 @@ export function Nav() {
           </div>
 
           <button
-            className="lg:hidden grid place-items-center h-10 w-10 rounded-full glass"
+            className="lg:hidden grid place-items-center h-10 w-10 rounded-full glass-nav"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -81,7 +81,7 @@ export function Nav() {
         </div>
 
         {open && (
-          <div className="lg:hidden mt-3 glass rounded-3xl p-5 animate-fade-up">
+          <div className="lg:hidden mt-3 glass-nav rounded-3xl p-5 animate-fade-up">
             <nav className="flex flex-col gap-1">
               {links.map((l) => (
                 <Link
