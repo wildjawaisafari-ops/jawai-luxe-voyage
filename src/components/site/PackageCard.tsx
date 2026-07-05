@@ -17,7 +17,7 @@ export function SafariZoneCard({
   image: string;
 }) {
   return (
-    <article className="group glass rounded-3xl overflow-hidden flex flex-col h-full transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[var(--shadow-gold)]">
+    <article className="group glass card-lift rounded-3xl overflow-hidden flex flex-col h-full">
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
           src={image}
@@ -25,7 +25,7 @@ export function SafariZoneCard({
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
         <div className="absolute top-4 left-4 glass-gold px-3 py-1.5 rounded-full inline-flex items-center gap-1.5">
           <Clock className="h-3.5 w-3.5 text-gold" />
           <span className="text-[0.7rem] text-gold-soft">{availability}</span>
@@ -45,11 +45,11 @@ export function SafariZoneCard({
               {SAFARI_PRICE_WITH_HITEA}
             </div>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-3.5 py-3">
-            <div className="text-[0.6rem] tracking-[0.22em] uppercase text-muted-foreground">
+          <div className="rounded-2xl border border-[color:var(--forest)]/25 bg-[color:var(--forest)]/[0.04] px-3.5 py-3">
+            <div className="text-[0.6rem] tracking-[0.22em] uppercase" style={{ color: "var(--forest-deep)" }}>
               Without Hi-Tea
             </div>
-            <div className="mt-1 font-display text-lg leading-tight text-foreground/90">
+            <div className="mt-1 font-display text-lg leading-tight text-foreground">
               {SAFARI_PRICE_WITHOUT_HITEA}
             </div>
           </div>
