@@ -31,9 +31,10 @@
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-gold-deep: var(--gold-deep);
-  --color-olive: var(--olive);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-forest-soft: var(--forest-soft);
   --color-sand: var(--sand);
-  --color-earth: var(--earth);
   --color-ink: var(--ink);
 
   --font-display: "Cormorant Garamond", "Cormorant", serif;
@@ -41,56 +42,62 @@
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 
-  /* Lighter warm charcoal — earthy, premium, not pitch black */
-  --background: oklch(0.245 0.018 65);
-  --foreground: oklch(0.975 0.014 85);
-  --ink: oklch(0.16 0.014 60);
+  /* Luxury nature palette — sand white base, forest green + gold */
+  --background: oklch(0.965 0.012 85);         /* #F8F5EF sand white */
+  --foreground: oklch(0.22 0.006 60);          /* #222 ink text */
+  --ink: oklch(0.16 0.008 60);
 
-  /* Earthy card surfaces — slightly elevated for contrast */
-  --card: oklch(0.30 0.022 68);
-  --card-foreground: oklch(0.975 0.014 85);
-  --popover: oklch(0.30 0.022 68);
-  --popover-foreground: oklch(0.975 0.014 85);
+  /* Pure white cards */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.006 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.006 60);
 
-  /* Refined warm gold */
-  --primary: oklch(0.82 0.135 85);
-  --primary-foreground: oklch(0.16 0.014 60);
-  --gold: oklch(0.82 0.135 85);
-  --gold-soft: oklch(0.90 0.10 88);
-  --gold-deep: oklch(0.60 0.115 75);
+  /* Forest green — primary */
+  --primary: oklch(0.40 0.048 165);            /* #2F5D50 forest */
+  --primary-foreground: oklch(0.98 0.006 85);
+  --forest: oklch(0.40 0.048 165);
+  --forest-deep: oklch(0.30 0.038 165);
+  --forest-soft: oklch(0.55 0.055 160);
 
-  /* Earthy palette: olive, sand, warm brown */
-  --olive: oklch(0.58 0.075 115);
-  --sand: oklch(0.88 0.055 80);
-  --earth: oklch(0.40 0.042 55);
+  /* Luxury gold accent */
+  --gold: oklch(0.72 0.115 78);                /* #C89B3C */
+  --gold-soft: oklch(0.82 0.095 82);
+  --gold-deep: oklch(0.58 0.115 72);
 
-  --secondary: oklch(0.34 0.022 68);
-  --secondary-foreground: oklch(0.975 0.014 85);
-  --muted: oklch(0.32 0.018 68);
-  --muted-foreground: oklch(0.82 0.022 82);
-  --accent: oklch(0.82 0.135 85);
-  --accent-foreground: oklch(0.16 0.014 60);
+  --sand: oklch(0.92 0.028 82);
+
+  --secondary: oklch(0.94 0.014 82);
+  --secondary-foreground: oklch(0.22 0.006 60);
+  --muted: oklch(0.93 0.012 82);
+  --muted-foreground: oklch(0.44 0.014 65);
+  --accent: oklch(0.72 0.115 78);
+  --accent-foreground: oklch(0.16 0.008 60);
 
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.82 0.135 85 / 60%);
+  --border: oklch(0.22 0.006 60 / 10%);
+  --input: oklch(0.22 0.006 60 / 12%);
+  --ring: oklch(0.72 0.115 78 / 55%);
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.92 0.10 88) 0%, oklch(0.82 0.135 85) 50%, oklch(0.60 0.115 75) 100%);
-  --gradient-radial-glow: radial-gradient(ellipse at top, oklch(0.82 0.135 85 / 0.22), transparent 60%);
-  --gradient-hero: linear-gradient(180deg, oklch(0.16 0.014 60 / 0.30) 0%, oklch(0.20 0.016 60 / 0.50) 55%, oklch(0.245 0.018 65 / 0.95) 100%);
-  --gradient-earth: linear-gradient(180deg, oklch(0.28 0.022 60) 0%, oklch(0.34 0.026 70) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.10 82) 0%, oklch(0.72 0.115 78) 50%, oklch(0.58 0.115 72) 100%);
+  --gradient-forest: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+  --gradient-radial-glow: radial-gradient(ellipse at top, oklch(0.72 0.115 78 / 0.14), transparent 60%);
+  /* Hero: gentle dark overlay ~35% so the leopard photo stays vivid */
+  --gradient-hero: linear-gradient(180deg, oklch(0.16 0.008 60 / 0.35) 0%, oklch(0.16 0.008 60 / 0.38) 55%, oklch(0.16 0.008 60 / 0.55) 100%);
+  --gradient-earth: linear-gradient(180deg, oklch(0.98 0.010 82) 0%, oklch(0.94 0.018 82) 100%);
 
-  --shadow-gold: 0 22px 60px -20px oklch(0.82 0.135 85 / 0.45);
-  --shadow-glass: 0 14px 44px -12px oklch(0.10 0.012 60 / 0.55);
+  --shadow-soft: 0 1px 2px oklch(0.22 0.006 60 / 0.04), 0 12px 32px -14px oklch(0.22 0.006 60 / 0.12);
+  --shadow-elevated: 0 4px 12px -4px oklch(0.22 0.006 60 / 0.10), 0 24px 60px -20px oklch(0.22 0.006 60 / 0.18);
+  --shadow-gold: 0 18px 42px -18px oklch(0.72 0.115 78 / 0.55);
+  --shadow-glass: var(--shadow-soft);
 }
 
 
-.dark { color-scheme: dark; }
+.dark { color-scheme: light; }
 
 @layer base {
   * { border-color: var(--color-border); }
@@ -100,39 +107,46 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    /* Brighter layered earthy gradients — sand top, olive corner, warm gold haze */
     background-image:
-      radial-gradient(ellipse 95% 60% at 50% -10%, oklch(0.88 0.055 80 / 0.12), transparent 65%),
-      radial-gradient(ellipse 70% 50% at 100% 100%, oklch(0.58 0.075 115 / 0.14), transparent 70%),
-      radial-gradient(ellipse 65% 50% at 0% 40%, oklch(0.40 0.042 55 / 0.22), transparent 75%),
-      linear-gradient(180deg, oklch(0.265 0.020 70) 0%, oklch(0.235 0.018 62) 100%);
+      radial-gradient(ellipse 90% 55% at 50% -10%, oklch(0.72 0.115 78 / 0.10), transparent 65%),
+      radial-gradient(ellipse 70% 50% at 100% 100%, oklch(0.40 0.048 165 / 0.08), transparent 70%),
+      linear-gradient(180deg, oklch(0.975 0.010 82) 0%, oklch(0.955 0.014 82) 100%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--foreground);
   }
   ::selection { background: var(--gold); color: var(--ink); }
 }
 
+/* Premium white card — used across packages, features, testimonials */
 @utility glass {
-  background: linear-gradient(135deg, oklch(1 0 0 / 0.06), oklch(1 0 0 / 0.02));
-  border: 1px solid oklch(1 0 0 / 0.10);
-  backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: var(--shadow-glass);
+  background: var(--card);
+  border: 1px solid oklch(0.22 0.006 60 / 0.08);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 400ms ease, transform 400ms ease, border-color 400ms ease;
 }
 
 @utility glass-gold {
-  background: linear-gradient(135deg, oklch(0.80 0.13 85 / 0.12), oklch(1 0 0 / 0.02));
-  border: 1px solid oklch(0.80 0.13 85 / 0.32);
-  backdrop-filter: blur(18px) saturate(140%);
+  background: linear-gradient(135deg, oklch(0.72 0.115 78 / 0.14), oklch(0.72 0.115 78 / 0.05));
+  border: 1px solid oklch(0.72 0.115 78 / 0.35);
+  backdrop-filter: blur(10px) saturate(140%);
 }
 
 @utility glass-earth {
-  background: linear-gradient(135deg, oklch(0.36 0.038 55 / 0.45), oklch(0.26 0.022 65 / 0.35));
-  border: 1px solid oklch(0.85 0.05 80 / 0.14);
-  backdrop-filter: blur(18px) saturate(140%);
+  background: linear-gradient(135deg, oklch(0.40 0.048 165 / 0.06), oklch(0.40 0.048 165 / 0.02));
+  border: 1px solid oklch(0.40 0.048 165 / 0.18);
+}
+
+/* Translucent white — used by sticky nav on scroll */
+@utility glass-nav {
+  background: oklch(1 0 0 / 0.78);
+  border: 1px solid oklch(0.22 0.006 60 / 0.08);
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 8px 28px -14px oklch(0.22 0.006 60 / 0.18);
 }
 
 @utility text-gradient-gold {
@@ -142,6 +156,7 @@
   color: transparent;
 }
 
+/* Primary CTA — gold */
 @utility btn-gold {
   display: inline-flex;
   align-items: center;
@@ -153,31 +168,34 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   border-radius: 9999px;
-  transition: transform 300ms ease, box-shadow 300ms ease, filter 300ms ease;
+  transition: transform 320ms ease, box-shadow 320ms ease, filter 320ms ease;
   box-shadow: var(--shadow-gold);
 }
 @utility btn-gold-hover {
-  &:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  &:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 22px 48px -18px oklch(0.72 0.115 78 / 0.65); }
 }
 
+/* Secondary CTA — forest green base, gold on hover */
 @utility btn-ghost-gold {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  border: 1px solid oklch(0.80 0.13 85 / 0.5);
-  color: var(--gold-soft);
+  border: 1px solid var(--forest);
+  color: var(--forest-deep);
   border-radius: 9999px;
+  background: oklch(1 0 0 / 0.6);
+  backdrop-filter: blur(6px);
   transition: all 300ms ease;
-  background: oklch(1 0 0 / 0.02);
-  backdrop-filter: blur(8px);
+  font-weight: 500;
 }
 @utility btn-ghost-gold-hover {
   &:hover {
-    background: oklch(0.80 0.13 85 / 0.12);
-    border-color: oklch(0.80 0.13 85 / 0.9);
-    color: var(--gold-soft);
+    background: var(--gradient-gold);
+    border-color: var(--gold);
+    color: var(--ink);
+    transform: translateY(-1px);
   }
 }
 
@@ -188,14 +206,24 @@
   font-size: 0.7rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--gold-soft);
-  font-weight: 500;
+  color: var(--gold-deep);
+  font-weight: 600;
 }
 
 @utility gold-divider {
   height: 1px;
-  width: 4rem;
-  background: var(--gradient-gold);
+  width: 3rem;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+}
+
+/* Light typography for hero over dark imagery */
+@utility hero-fg { color: oklch(0.985 0.006 85); }
+@utility hero-fg-muted { color: oklch(0.92 0.012 82 / 0.90); }
+
+/* Dark-surface footer styling */
+@utility surface-forest {
+  background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
+  color: oklch(0.96 0.010 82);
 }
 
 @keyframes fade-up {
@@ -205,10 +233,6 @@
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 }
 @keyframes float-slow {
   0%,100% { transform: translateY(0); }
@@ -223,3 +247,9 @@
 @utility delay-2 { animation-delay: 260ms; }
 @utility delay-3 { animation-delay: 420ms; }
 @utility delay-4 { animation-delay: 600ms; }
+
+/* Card hover elevation used across zone/temple cards */
+@utility card-lift {
+  transition: transform 500ms ease, box-shadow 500ms ease, border-color 500ms ease;
+  &:hover { transform: translateY(-6px); box-shadow: var(--shadow-elevated); border-color: oklch(0.72 0.115 78 / 0.35); }
+}
