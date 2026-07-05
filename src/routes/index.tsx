@@ -451,7 +451,7 @@ function Reviews() {
             <blockquote className="mt-5 text-foreground/90 leading-relaxed font-display text-lg italic">
               "{r.quote}"
             </blockquote>
-            <figcaption className="mt-6 pt-6 border-t border-white/5">
+            <figcaption className="mt-6 pt-6 border-t border-black/5">
               <div className="text-sm font-medium">{r.name}</div>
               <div className="text-xs text-muted-foreground">{r.location}</div>
             </figcaption>

@@ -120,7 +120,7 @@ function ContactPage() {
                       rows={5}
                       value={form.message}
                       onChange={(e) => update("message", e.target.value)}
-                      className="mt-3 w-full rounded-2xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/30 transition"
+                      className="mt-3 w-full rounded-2xl bg-white border border-black/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-[color:var(--gold)] focus:outline-none focus:ring-2 focus:ring-[color:var(--gold)]/30 transition"
                       placeholder="Honeymoon, family, photography focus, temple visits, anything you'd love to include..."
                     />
                   </label>
@@ -153,7 +153,7 @@ function Field({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-3 w-full rounded-2xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/30 transition"
+        className="mt-3 w-full rounded-2xl bg-white border border-black/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-[color:var(--gold)] focus:outline-none focus:ring-2 focus:ring-[color:var(--gold)]/30 transition"
       />
     </label>
   );
