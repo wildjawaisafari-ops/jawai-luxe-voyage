@@ -86,21 +86,20 @@ function Hero() {
           className="h-full w-full object-cover scale-105 animate-fade-in-slow"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/30 to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-32 pb-20 w-full">
         <div className="max-w-2xl">
           <div className="flex items-center gap-3 animate-fade-up">
             <span className="gold-divider" />
-            <span className="eyebrow">Jawai · Rajasthan · India</span>
+            <span className="eyebrow" style={{ color: "var(--gold-soft)" }}>Jawai · Rajasthan · India</span>
           </div>
-          <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl leading-[0.95] animate-fade-up delay-1">
+          <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl leading-[0.95] animate-fade-up delay-1 hero-fg">
             Where leopards
             <br />
             walk among <span className="text-gradient-gold italic">gods</span>.
           </h1>
-          <p className="mt-7 text-base sm:text-lg text-foreground/85 max-w-xl leading-relaxed animate-fade-up delay-2">
+          <p className="mt-7 text-base sm:text-lg hero-fg-muted max-w-xl leading-relaxed animate-fade-up delay-2">
             Private, low-impact safaris through the granite kingdoms of Jawai —
             home to India's most photographed wild leopards, sacred lakes and
             the saffron-robed Rabari people.
@@ -113,7 +112,13 @@ function Hero() {
               href={whatsappUrl("Hello Wild Jawai Safari, I would like to plan a journey.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-ghost-gold btn-ghost-gold-hover"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                background: "oklch(1 0 0 / 0.10)",
+                border: "1px solid oklch(1 0 0 / 0.35)",
+                color: "oklch(0.985 0.006 85)",
+                backdropFilter: "blur(10px)",
+              }}
             >
               <MessageCircle className="h-4 w-4" /> Plan on WhatsApp
             </a>
@@ -127,16 +132,16 @@ function Hero() {
             ].map((s) => (
               <div key={s.l}>
                 <dt className="font-display text-4xl text-gradient-gold">{s.v}</dt>
-                <dd className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.l}</dd>
+                <dd className="mt-1 text-xs uppercase tracking-[0.2em] hero-fg-muted">{s.l}</dd>
               </div>
             ))}
           </dl>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-muted-foreground animate-float-slow">
-        <span className="eyebrow text-[0.55rem]">Scroll</span>
-        <span className="h-12 w-px bg-gradient-to-b from-gold/60 to-transparent" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 hero-fg-muted animate-float-slow">
+        <span className="eyebrow text-[0.55rem]" style={{ color: "var(--gold-soft)" }}>Scroll</span>
+        <span className="h-12 w-px bg-gradient-to-b from-gold/70 to-transparent" />
       </div>
     </section>
   );
