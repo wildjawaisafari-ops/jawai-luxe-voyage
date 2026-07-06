@@ -1,6 +1,8 @@
 export const WHATSAPP_NUMBER = "919256928266";
 export const WHATSAPP_DISPLAY = "+91 92569 28266";
+export const PHONE_TEL = "+919256928266";
 export const CONTACT_EMAIL = "wildjawaisafari@gmail.com";
+export const SITE_URL = "https://jawai-luxe-voyage.lovable.app";
 
 export function whatsappUrl(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -8,6 +10,167 @@ export function whatsappUrl(message: string) {
 
 export const SAFARI_PRICE_WITH_HITEA = "₹3,500 per Gypsy";
 export const SAFARI_PRICE_WITHOUT_HITEA = "₹3,000 per Gypsy";
+
+/** Reusable trust badges shown across the site */
+export const trustBadges = [
+  "Local Expert Guides",
+  "Best Leopard Sighting Experience",
+  "Private Safari",
+  "Instant WhatsApp Booking",
+  "Secure Booking",
+] as const;
+
+/** Curated safari experiences — shown on the Packages page as tour options */
+export const safariPackageTypes = [
+  {
+    slug: "morning-leopard-safari",
+    name: "Morning Leopard Safari",
+    tagline: "Sunrise Gypsy Drive",
+    desc: "The best time to spot leopards in Jawai — active cats on granite ridges as the first light hits the hills.",
+    duration: "3 hours",
+  },
+  {
+    slug: "evening-leopard-safari",
+    name: "Evening Leopard Safari",
+    tagline: "Sunset Gypsy Drive",
+    desc: "Golden-hour drives when leopards emerge from caves to hunt — silhouettes against a saffron sky.",
+    duration: "3 hours",
+  },
+  {
+    slug: "private-leopard-safari",
+    name: "Private Leopard Safari",
+    tagline: "Exclusive Gypsy · Just Your Group",
+    desc: "Every safari is already private — one gypsy, your family or friends only, no sharing with strangers.",
+    duration: "3 hours",
+  },
+  {
+    slug: "full-day-leopard-safari",
+    name: "Full Day Leopard Safari",
+    tagline: "Morning + Evening Combo",
+    desc: "Both sunrise and sunset drives in a single day — the highest possible leopard sighting probability.",
+    duration: "Full day",
+  },
+  {
+    slug: "jawai-dam-safari",
+    name: "Jawai Dam Safari",
+    tagline: "Crocodiles · Flamingos · Sunset",
+    desc: "Explore the reservoir — mugger crocodiles at the shoreline, flamingos in season and dramatic dam-side sunsets.",
+    duration: "3 hours",
+  },
+  {
+    slug: "village-safari-jawai",
+    name: "Village Safari",
+    tagline: "Rabari Culture Tour",
+    desc: "Meet the saffron-turbaned Rabari shepherds who have shared these hills with leopards for 150 years.",
+    duration: "2–3 hours",
+  },
+  {
+    slug: "bird-watching-jawai",
+    name: "Bird Watching Tour",
+    tagline: "Migratory & Resident Birds",
+    desc: "Flamingos, bar-headed geese, painted storks, sarus cranes, kingfishers and raptors around the Jawai wetlands.",
+    duration: "3 hours",
+  },
+  {
+    slug: "wildlife-photography-jawai",
+    name: "Wildlife Photography Tour",
+    tagline: "Guided Photo Safari",
+    desc: "Positioned by trackers who know each leopard's habits — the best light, angles and sight-lines for serious photographers.",
+    duration: "Custom",
+  },
+] as const;
+
+/** Wildlife of Jawai — species information shown on the homepage */
+export const wildlife = [
+  {
+    name: "Indian Leopard",
+    latin: "Panthera pardus fusca",
+    desc: "Jawai is home to India's densest wild leopard population outside a reserve — over 70 cats living peacefully among granite caves.",
+    image: "sena",
+  },
+  {
+    name: "Sloth Bear",
+    latin: "Melursus ursinus",
+    desc: "Shy and rarely seen — the Jungle Safari Zone offers the best chance to spot these shaggy termite hunters at dawn.",
+    image: "jungle",
+  },
+  {
+    name: "Striped Hyena",
+    latin: "Hyaena hyaena",
+    desc: "Nocturnal and elusive scavengers of the Aravalli foothills, occasionally caught in headlights on early sunrise drives.",
+    image: "bera",
+  },
+  {
+    name: "Marsh Crocodile",
+    latin: "Crocodylus palustris",
+    desc: "Muggers sun themselves along Jawai Dam — a signature sighting on every dam-side safari and boat outing.",
+    image: "crocodile",
+  },
+  {
+    name: "Blue Bull (Nilgai)",
+    latin: "Boselaphus tragocamelus",
+    desc: "Asia's largest antelope — herds graze the open scrubland and are commonly sighted across every safari zone.",
+    image: "jawai-dam",
+  },
+  {
+    name: "Indian Fox & Golden Jackal",
+    latin: "Vulpes bengalensis · Canis aureus",
+    desc: "Dawn and dusk are prime hours to spot these agile canids trotting the ridge lines and dry riverbeds.",
+    image: "jungle",
+  },
+  {
+    name: "Indian Peafowl",
+    latin: "Pavo cristatus",
+    desc: "India's national bird — flashing turquoise-and-emerald tails against the granite, especially spectacular in monsoon.",
+    image: "sena",
+  },
+  {
+    name: "Migratory Birds",
+    latin: "Flamingos · Bar-headed Geese · Painted Storks",
+    desc: "Jawai's wetlands host thousands of migratory birds from November to March — a birder's paradise.",
+    image: "bera",
+  },
+] as const;
+
+/** How to book — displayed as the Booking Process section */
+export const bookingProcess = [
+  { step: "01", title: "Message on WhatsApp", desc: "Send us your travel dates, group size and preferred safari zone." },
+  { step: "02", title: "Get Custom Quote", desc: "We share the best gypsy availability, timings and Hi-Tea options within minutes." },
+  { step: "03", title: "Confirm & Pay Advance", desc: "Secure booking with a simple UPI or bank advance — instant confirmation." },
+  { step: "04", title: "Drive Into the Wild", desc: "Meet our tracker at pickup, board the gypsy, and begin your Jawai Safari adventure." },
+] as const;
+
+/** Placeholder Google-style reviews shown until Place ID is wired */
+export const googleReviews = [
+  {
+    name: "Rohan S.",
+    location: "Bengaluru",
+    stars: 5,
+    quote: "Best Jawai Safari experience! Spotted three leopards on the sunrise drive. The tracker knew exactly where to go.",
+    time: "2 weeks ago",
+  },
+  {
+    name: "Emma T.",
+    location: "United Kingdom",
+    stars: 5,
+    quote: "Truly world-class. Private gypsy, expert local guide, and unforgettable sunset over Jawai Dam. Booked entirely on WhatsApp — super smooth.",
+    time: "1 month ago",
+  },
+  {
+    name: "Priya M.",
+    location: "Mumbai",
+    stars: 5,
+    quote: "Wild Jawai Safari made our anniversary special. Hi-Tea by the lake, leopard sighting, warm hospitality. Highly recommend for luxury wildlife lovers.",
+    time: "1 month ago",
+  },
+  {
+    name: "Karan V.",
+    location: "Delhi",
+    stars: 5,
+    quote: "Excellent booking process and honest pricing. The evening leopard safari in Bera was magical. Will return with friends.",
+    time: "3 months ago",
+  },
+] as const;
 
 export const safariZones = [
   {
