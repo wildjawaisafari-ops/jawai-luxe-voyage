@@ -1,9 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark, Cat } from "lucide-react";
+import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark, Cat, ShieldCheck, Award, Camera, Bird, MessageSquare, FileCheck, CreditCard, Compass, Sunrise, Sunset } from "lucide-react";
 import { Section } from "../components/site/Section";
 import { SafariZoneCard } from "../components/site/PackageCard";
-import { safariZones, reviews, faqs, whyUs, famousLeopards, sacredPlaces, whatsappUrl, WHATSAPP_DISPLAY, CONTACT_EMAIL } from "../lib/site-data";
+import {
+  safariZones,
+  reviews,
+  faqs,
+  whyUs,
+  famousLeopards,
+  sacredPlaces,
+  whatsappUrl,
+  WHATSAPP_DISPLAY,
+  PHONE_TEL,
+  CONTACT_EMAIL,
+  SITE_URL,
+  trustBadges,
+  wildlife,
+  bookingProcess,
+  googleReviews,
+} from "../lib/site-data";
 
 import photoHero from "../assets/photo-hero.jpg";
 import photoSena from "../assets/photo-sena.jpg";
@@ -24,6 +40,7 @@ const imageMap: Record<string, string> = {
   jungle: photoJungle,
   bera: photoBera,
   "jawai-dam": photoJawaiDam,
+  crocodile: photoCrocodile,
 };
 
 const templeImageMap: Record<string, string> = {
@@ -33,24 +50,64 @@ const templeImageMap: Record<string, string> = {
 };
 
 const galleryImages = [
-  { src: photoHero, alt: "Safari gypsy at Jawai lake", span: "md:col-span-2 md:row-span-2" },
-  { src: photoHiTeaLake, alt: "Hi-Tea by Jawai lake" },
-  { src: photoJungle, alt: "Rabari shepherd herding goats at sunset" },
-  { src: photoBera, alt: "Flamingos on Jawai waters" },
-  { src: photoCrocodile, alt: "Mugger crocodile in Jawai dam" },
+  { src: photoHero, alt: "Jawai Leopard Safari gypsy at sunrise on the granite shore of Jawai Dam", span: "md:col-span-2 md:row-span-2" },
+  { src: photoHiTeaLake, alt: "Luxury Hi-Tea served lakeside on a Jawai Safari" },
+  { src: photoJungle, alt: "Rabari shepherd herding goats through Jawai hills at sunset" },
+  { src: photoBera, alt: "Flamingos on Jawai Dam — bird watching Jawai Safari" },
+  { src: photoCrocodile, alt: "Mugger crocodile at Jawai Dam wildlife safari" },
 ];
+
+const heroBookMsg = "Hello Wild Jawai Safari, I would like to book a Jawai Leopard Safari.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Wild Jawai Safari — Jawai Leopard Safari Booking in Rajasthan" },
-      { name: "description", content: "Wild Jawai Safari — book a private leopard safari in Jawai, Rajasthan. Expert local trackers, sunrise & sunset gypsy safaris, Hi-Tea included, luxury resort booking." },
-      { property: "og:title", content: "Wild Jawai Safari — Luxury Leopard Safaris in Jawai" },
-      { property: "og:description", content: "Private luxury leopard safaris through the granite hills of Jawai, Rajasthan." },
-      { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/" },
+      { title: "Jawai Safari — Best Jawai Leopard Safari Booking in Rajasthan | Wild Jawai Safari" },
+      { name: "description", content: "Book the best Jawai Leopard Safari in Rajasthan with Wild Jawai Safari. Private morning & evening gypsy safaris, expert local guides, Jawai Dam wildlife tours, bird watching & luxury resort booking." },
+      { name: "keywords", content: "Jawai Safari, Jawai Leopard Safari, Jawai Safari Booking, Leopard Safari Rajasthan, Best Jawai Safari, Wild Jawai Safari, Morning Leopard Safari, Evening Leopard Safari, Jawai Dam Safari, Village Safari Jawai, Bird Watching Jawai, Sena Safari Zone, Kothar Safari Zone, Private Safari Jawai, Jawai Wildlife Safari, Book Jawai Safari, Luxury Jawai Safari, Jawai Safari Packages, Jawai Safari Cost" },
+      { property: "og:title", content: "Jawai Safari — Best Jawai Leopard Safari in Rajasthan | Wild Jawai Safari" },
+      { property: "og:description", content: "Private Jawai Leopard Safari in Rajasthan. Sunrise & sunset gypsy drives, expert local trackers, instant WhatsApp booking." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:image", content: photoHero },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Jawai Safari — Best Jawai Leopard Safari in Rajasthan" },
+      { name: "twitter:description", content: "Private Jawai Safari with expert local trackers. Book instantly on WhatsApp." },
+      { name: "twitter:image", content: photoHero },
     ],
-    links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Jawai Leopard Safari",
+          name: "Jawai Leopard Safari — Private Gypsy Wildlife Tours",
+          provider: { "@type": "TravelAgency", name: "Wild Jawai Safari", url: SITE_URL, telephone: "+91 92569 28266" },
+          areaServed: [
+            { "@type": "Place", name: "Jawai, Rajasthan, India" },
+            { "@type": "Place", name: "Bera, Rajasthan, India" },
+            { "@type": "Place", name: "Pali, Rajasthan, India" },
+          ],
+          description: "Private morning and evening leopard safaris in Jawai, Rajasthan — expert local trackers, Hi-Tea included, instant WhatsApp booking.",
+          offers: [
+            { "@type": "Offer", name: "Jawai Safari with Hi-Tea", price: "3500", priceCurrency: "INR", availability: "https://schema.org/InStock" },
+            { "@type": "Offer", name: "Jawai Safari without Hi-Tea", price: "3000", priceCurrency: "INR", availability: "https://schema.org/InStock" },
+          ],
+        }),
+      },
+    ],
   }),
   component: Home,
 });
@@ -59,20 +116,25 @@ function Home() {
   return (
     <>
       <Hero />
+      <TrustBadges />
       <PackagesPreview />
+      <WildlifeSection />
       <PickupDrop />
       <WhyChooseUs />
+      <BookingProcessSection />
       <FamousLeopards />
       <SacredPlaces />
       <HotelBooking />
       <GalleryPreview />
       <AboutPreview />
+      <GoogleReviews />
       <Reviews />
       <FAQPreview />
       <ContactPreview />
     </>
   );
 }
+
 
 function Hero() {
   return (
