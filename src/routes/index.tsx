@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark, Cat, ShieldCheck, Award, Camera, Bird, MessageSquare, FileCheck, CreditCard, Compass, Sunrise, Sunset } from "lucide-react";
+import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark, Cat, ShieldCheck, MessageSquare, FileCheck, CreditCard, Compass } from "lucide-react";
 import { Section } from "../components/site/Section";
 import { SafariZoneCard } from "../components/site/PackageCard";
 import {
