@@ -156,22 +156,26 @@ function Hero() {
             <span className="gold-divider" />
             <span className="eyebrow" style={{ color: "var(--gold-soft)" }}>Jawai · Rajasthan · India</span>
           </div>
-          <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-8xl leading-[0.95] animate-fade-up delay-1 hero-fg">
-            Where leopards
+          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] animate-fade-up delay-1 hero-fg">
+            Best Jawai Leopard Safari
             <br />
-            walk among <span className="text-gradient-gold italic">gods</span>.
+            in <span className="text-gradient-gold italic">Rajasthan</span>
           </h1>
           <p className="mt-7 text-base sm:text-lg hero-fg-muted max-w-xl leading-relaxed animate-fade-up delay-2">
-            Private, low-impact safaris through the granite kingdoms of Jawai —
-            home to India's most photographed wild leopards, sacred lakes and
-            the saffron-robed Rabari people.
+            Experience unforgettable Jawai Safari adventures with experienced local guides —
+            private morning &amp; evening gypsy drives, expert trackers and instant WhatsApp booking.
           </p>
           <div className="mt-9 flex flex-wrap gap-3 animate-fade-up delay-3">
-            <Link to="/packages" className="btn-gold btn-gold-hover">
-              Explore Safaris <ArrowRight className="h-4 w-4" />
-            </Link>
             <a
-              href={whatsappUrl("Hello Wild Jawai Safari, I would like to plan a journey.")}
+              href={whatsappUrl(heroBookMsg)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold btn-gold-hover"
+            >
+              Book Now <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href={whatsappUrl(heroBookMsg)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5"
@@ -182,11 +186,23 @@ function Hero() {
                 backdropFilter: "blur(10px)",
               }}
             >
-              <MessageCircle className="h-4 w-4" /> Plan on WhatsApp
+              <MessageCircle className="h-4 w-4" /> WhatsApp
+            </a>
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                background: "oklch(1 0 0 / 0.10)",
+                border: "1px solid oklch(0.72 0.115 78 / 0.55)",
+                color: "oklch(0.985 0.006 85)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <Phone className="h-4 w-4" /> Call Now
             </a>
           </div>
 
-          <dl className="mt-16 grid grid-cols-3 gap-6 max-w-lg animate-fade-up delay-4">
+          <dl className="mt-14 grid grid-cols-3 gap-6 max-w-lg animate-fade-up delay-4">
             {[
               { v: "70+", l: "Wild Leopards" },
               { v: "95%", l: "Sighting Rate" },
@@ -208,6 +224,174 @@ function Hero() {
     </section>
   );
 }
+
+function TrustBadges() {
+  return (
+    <section aria-label="Why book Jawai Safari with us" className="relative -mt-6 sm:-mt-10 z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="glass rounded-3xl px-5 sm:px-8 py-5 sm:py-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {trustBadges.map((b) => (
+            <div key={b} className="flex items-center gap-2.5 text-sm">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full glass-gold">
+                <ShieldCheck className="h-4 w-4 text-gold" />
+              </span>
+              <span className="text-foreground/85 font-medium">{b}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WildlifeSection() {
+  return (
+    <Section
+      eyebrow="Jawai Wildlife"
+      title={<>Wildlife of the <span className="italic text-gradient-gold">Jawai Safari</span>.</>}
+      subtitle="From India's densest leopard population to sloth bears, hyenas, crocodiles and thousands of migratory birds — Jawai Safari offers unmatched wildlife encounters."
+      center
+    >
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {wildlife.map((w) => (
+          <article
+            key={w.name}
+            className="group relative overflow-hidden rounded-3xl glass card-lift flex flex-col"
+          >
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={imageMap[w.image] ?? photoHero}
+                alt={`${w.name} — wildlife spotted on a Jawai Safari in Rajasthan`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <h3 className="font-display text-xl leading-tight text-white">{w.name}</h3>
+                <p className="mt-0.5 text-[0.65rem] tracking-[0.2em] uppercase" style={{ color: "var(--gold-soft)" }}>{w.latin}</p>
+              </div>
+            </div>
+            <div className="p-5 flex-1">
+              <p className="text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <a href={whatsappUrl("Hello, I'd like to plan a Jawai Wildlife Safari.")} target="_blank" rel="noopener noreferrer" className="btn-gold btn-gold-hover">
+          <MessageCircle className="h-4 w-4" /> Book Wildlife Safari
+        </a>
+        <a href={`tel:${PHONE_TEL}`} className="btn-ghost-gold btn-ghost-gold-hover">
+          <Phone className="h-4 w-4" /> Call Now
+        </a>
+      </div>
+    </Section>
+  );
+}
+
+function BookingProcessSection() {
+  const icons = [MessageSquare, FileCheck, CreditCard, Compass];
+  return (
+    <Section
+      eyebrow="Booking Process"
+      title={<>Book Jawai Safari in <span className="italic text-gradient-gold">4 simple steps</span>.</>}
+      subtitle="Instant WhatsApp booking, secure payment, and a private gypsy waiting at your pickup."
+      center
+    >
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {bookingProcess.map((b, i) => {
+          const Icon = icons[i];
+          return (
+            <div key={b.step} className="glass card-lift rounded-3xl p-7 relative">
+              <div className="flex items-center justify-between">
+                <span className="grid h-12 w-12 place-items-center rounded-2xl glass-gold">
+                  <Icon className="h-5 w-5 text-gold" />
+                </span>
+                <span className="font-display text-3xl text-gradient-gold">{b.step}</span>
+              </div>
+              <h3 className="mt-5 font-display text-xl leading-tight">{b.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b.desc}</p>
+            </div>
+          );
+        })}
+      </div>
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <a href={whatsappUrl(heroBookMsg)} target="_blank" rel="noopener noreferrer" className="btn-gold btn-gold-hover">
+          <MessageCircle className="h-4 w-4" /> Book on WhatsApp
+        </a>
+        <a href={`tel:${PHONE_TEL}`} className="btn-ghost-gold btn-ghost-gold-hover">
+          <Phone className="h-4 w-4" /> Call {WHATSAPP_DISPLAY}
+        </a>
+      </div>
+    </Section>
+  );
+}
+
+function GoogleReviews() {
+  return (
+    <Section
+      eyebrow="Google Reviews"
+      title={<>Loved by <span className="italic text-gradient-gold">Jawai Safari</span> guests.</>}
+      subtitle="Real experiences from travellers who booked their Jawai Leopard Safari with Wild Jawai Safari."
+      center
+    >
+      <div className="mx-auto mb-8 flex flex-col items-center gap-2">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1 text-gold">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="h-5 w-5 fill-current" />
+            ))}
+          </div>
+          <span className="font-display text-2xl">5.0</span>
+        </div>
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Google Rating · Latest Reviews</p>
+      </div>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {googleReviews.map((r) => (
+          <figure key={r.name} className="glass card-lift rounded-3xl p-6 flex flex-col">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-full glass-gold text-gold font-display text-lg">
+                {r.name.charAt(0)}
+              </span>
+              <div>
+                <div className="text-sm font-medium">{r.name}</div>
+                <div className="text-[0.65rem] tracking-[0.18em] uppercase text-muted-foreground">{r.location}</div>
+              </div>
+            </div>
+            <div className="mt-4 flex gap-0.5 text-gold">
+              {Array.from({ length: r.stars }).map((_, i) => (
+                <Star key={i} className="h-3.5 w-3.5 fill-current" />
+              ))}
+            </div>
+            <blockquote className="mt-3 text-sm text-foreground/85 leading-relaxed flex-1">
+              "{r.quote}"
+            </blockquote>
+            <div className="mt-4 text-[0.7rem] text-muted-foreground">{r.time}</div>
+          </figure>
+        ))}
+      </div>
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="https://www.google.com/search?q=Wild+Jawai+Safari"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost-gold btn-ghost-gold-hover"
+        >
+          <Star className="h-4 w-4" /> View Google Reviews
+        </a>
+        <a
+          href="https://www.google.com/search?q=Wild+Jawai+Safari+review"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold btn-gold-hover"
+        >
+          <Star className="h-4 w-4" /> Write a Google Review
+        </a>
+      </div>
+    </Section>
+  );
+}
+
 
 function PackagesPreview() {
   return (
