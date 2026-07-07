@@ -14,16 +14,342 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          author_id: string | null
+          body_html: string
+          category: string | null
+          cover_image: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          published_at: string | null
+          seo_description: string | null
+          seo_og_image: string | null
+          seo_title: string | null
+          slug: string
+          status: Database["public"]["Enums"]["post_status"]
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id?: string | null
+          body_html?: string
+          category?: string | null
+          cover_image?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          published_at?: string | null
+          seo_description?: string | null
+          seo_og_image?: string | null
+          seo_title?: string | null
+          slug: string
+          status?: Database["public"]["Enums"]["post_status"]
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string | null
+          body_html?: string
+          category?: string | null
+          cover_image?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          published_at?: string | null
+          seo_description?: string | null
+          seo_og_image?: string | null
+          seo_title?: string | null
+          slug?: string
+          status?: Database["public"]["Enums"]["post_status"]
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      faqs: {
+        Row: {
+          answer: string
+          created_at: string
+          id: string
+          published: boolean
+          question: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          question: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          id?: string
+          published?: boolean
+          question?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      gallery_images: {
+        Row: {
+          alt_text: string
+          category: Database["public"]["Enums"]["gallery_category"]
+          created_at: string
+          id: string
+          published: boolean
+          sort_order: number
+          title: string | null
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          alt_text?: string
+          category?: Database["public"]["Enums"]["gallery_category"]
+          created_at?: string
+          id?: string
+          published?: boolean
+          sort_order?: number
+          title?: string | null
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          alt_text?: string
+          category?: Database["public"]["Enums"]["gallery_category"]
+          created_at?: string
+          id?: string
+          published?: boolean
+          sort_order?: number
+          title?: string | null
+          updated_at?: string
+          url?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          created_at: string
+          id: string
+          location: string | null
+          name: string
+          published: boolean
+          quote: string
+          rating: number
+          sort_order: number
+          source: Database["public"]["Enums"]["review_source"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          location?: string | null
+          name: string
+          published?: boolean
+          quote: string
+          rating?: number
+          sort_order?: number
+          source?: Database["public"]["Enums"]["review_source"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          location?: string | null
+          name?: string
+          published?: boolean
+          quote?: string
+          rating?: number
+          sort_order?: number
+          source?: Database["public"]["Enums"]["review_source"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      safari_packages: {
+        Row: {
+          created_at: string
+          description: string | null
+          duration: string | null
+          featured: boolean
+          highlights: string[]
+          id: string
+          image_url: string | null
+          name: string
+          price_with_hitea: string | null
+          price_without_hitea: string | null
+          published: boolean
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          sort_order: number
+          tagline: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          featured?: boolean
+          highlights?: string[]
+          id?: string
+          image_url?: string | null
+          name: string
+          price_with_hitea?: string | null
+          price_without_hitea?: string | null
+          published?: boolean
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          sort_order?: number
+          tagline?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          featured?: boolean
+          highlights?: string[]
+          id?: string
+          image_url?: string | null
+          name?: string
+          price_with_hitea?: string | null
+          price_without_hitea?: string | null
+          published?: boolean
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          sort_order?: number
+          tagline?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          address: string
+          email: string
+          facebook_url: string | null
+          google_place_id: string | null
+          hero_subtitle: string
+          hero_title: string
+          id: string
+          instagram_url: string | null
+          map_lat: number | null
+          map_lng: number | null
+          og_image_url: string | null
+          phone_number: string
+          seo_description: string
+          seo_keywords: string
+          seo_title: string
+          twitter_url: string | null
+          updated_at: string
+          whatsapp_number: string
+          youtube_url: string | null
+        }
+        Insert: {
+          address?: string
+          email?: string
+          facebook_url?: string | null
+          google_place_id?: string | null
+          hero_subtitle?: string
+          hero_title?: string
+          id?: string
+          instagram_url?: string | null
+          map_lat?: number | null
+          map_lng?: number | null
+          og_image_url?: string | null
+          phone_number?: string
+          seo_description?: string
+          seo_keywords?: string
+          seo_title?: string
+          twitter_url?: string | null
+          updated_at?: string
+          whatsapp_number?: string
+          youtube_url?: string | null
+        }
+        Update: {
+          address?: string
+          email?: string
+          facebook_url?: string | null
+          google_place_id?: string | null
+          hero_subtitle?: string
+          hero_title?: string
+          id?: string
+          instagram_url?: string | null
+          map_lat?: number | null
+          map_lng?: number | null
+          og_image_url?: string | null
+          phone_number?: string
+          seo_description?: string
+          seo_keywords?: string
+          seo_title?: string
+          twitter_url?: string | null
+          updated_at?: string
+          whatsapp_number?: string
+          youtube_url?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor"
+      gallery_category:
+        | "leopard"
+        | "safari"
+        | "birds"
+        | "village"
+        | "jawai_dam"
+        | "luxury_stay"
+        | "wildlife"
+        | "guests"
+        | "photography"
+      post_status: "draft" | "scheduled" | "published"
+      review_source: "manual" | "google"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +476,21 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor"],
+      gallery_category: [
+        "leopard",
+        "safari",
+        "birds",
+        "village",
+        "jawai_dam",
+        "luxury_stay",
+        "wildlife",
+        "guests",
+        "photography",
+      ],
+      post_status: ["draft", "scheduled", "published"],
+      review_source: ["manual", "google"],
+    },
   },
 } as const
