@@ -14,7 +14,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminLayout,
 });
 
-const tabs = [
+const tabs: { to: string; label: string; exact?: boolean }[] = [
   { to: "/admin", label: "Dashboard", exact: true },
   { to: "/admin/settings", label: "Site Settings" },
   { to: "/admin/packages", label: "Packages" },
@@ -22,7 +22,7 @@ const tabs = [
   { to: "/admin/gallery", label: "Gallery" },
   { to: "/admin/faqs", label: "FAQs" },
   { to: "/admin/reviews", label: "Reviews" },
-] as const;
+];
 
 function AdminLayout() {
   const { loading, isAdmin } = useIsAdmin();
