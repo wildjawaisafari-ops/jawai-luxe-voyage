@@ -7,7 +7,6 @@ import { Section } from "../components/site/Section";
 import { SafariZoneCard } from "../components/site/PackageCard";
 import { useReviews, useFaqs } from "../lib/public-data";
 import { fetchGoogleReviews } from "../lib/google-reviews.functions";
-import { SafariZoneCard } from "../components/site/PackageCard";
 import {
   safariZones,
   reviews,
