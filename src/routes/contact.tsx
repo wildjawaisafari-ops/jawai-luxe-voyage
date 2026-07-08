@@ -22,14 +22,17 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    dates: "",
-    guests: "",
-    message: "",
-  });
+  const { data: settings } = useSiteSettings();
+  const phone = settings ? displayPhone(settings.phone_number) : WHATSAPP_DISPLAY;
+  const email = settings?.email ?? CONTACT_EMAIL;
+  const address = settings?.address ?? "Jawai Bandh, Pali district\nRajasthan 306126, India";
+  const waMsg = (m: string) => settings ? whatsappHref(settings.whatsapp_number, m) : whatsappUrl(m);
+  const mapQuery = encodeURIComponent(address.replace(/\n/g, ", "));
+  const mapSrc = settings?.map_lat && settings?.map_lng
+    ? `https://www.google.com/maps?q=${settings.map_lat},${settings.map_lng}&z=13&output=embed`
+    : `https://www.google.com/maps?q=${mapQuery}&z=13&output=embed`;
+
+  const [form, setForm] = useState({ name: "", email: "", phone: "", dates: "", guests: "", message: "" });
 
   function update<K extends keyof typeof form>(k: K, v: string) {
     setForm((f) => ({ ...f, [k]: v }));
@@ -38,8 +41,7 @@ function ContactPage() {
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const lines = [
-      "Hello Wild Jawai Safari, I would like to plan a safari.",
-      "",
+      "Hello Wild Jawai Safari, I would like to plan a safari.", "",
       form.name && `Name: ${form.name}`,
       form.email && `Email: ${form.email}`,
       form.phone && `Phone: ${form.phone}`,
@@ -47,7 +49,7 @@ function ContactPage() {
       form.guests && `Guests: ${form.guests}`,
       form.message && `Details: ${form.message}`,
     ].filter(Boolean).join("\n");
-    window.open(whatsappUrl(lines), "_blank", "noopener,noreferrer");
+    window.open(waMsg(lines), "_blank", "noopener,noreferrer");
   }
 
   return (
@@ -68,24 +70,33 @@ function ContactPage() {
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full glass-gold"><MapPin className="h-4 w-4 text-gold" /></span>
                   <div>
                     <div className="eyebrow text-[0.55rem]">Camp</div>
-                    <div className="mt-1">Jawai Bandh, Pali district<br/>Rajasthan 306126, India</div>
+                    <div className="mt-1 whitespace-pre-line">{address}</div>
                   </div>
                 </li>
                 <li className="flex gap-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full glass-gold"><Phone className="h-4 w-4 text-gold" /></span>
                   <div>
                     <div className="eyebrow text-[0.55rem]">Phone / WhatsApp</div>
-                    <a href={whatsappUrl("Hello Wild Jawai Safari")} target="_blank" rel="noopener noreferrer" className="mt-1 block hover:text-gold transition-colors">{WHATSAPP_DISPLAY}</a>
+                    <a href={waMsg("Hello Wild Jawai Safari")} target="_blank" rel="noopener noreferrer" className="mt-1 block hover:text-gold transition-colors">{phone}</a>
                   </div>
                 </li>
                 <li className="flex gap-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full glass-gold"><Mail className="h-4 w-4 text-gold" /></span>
                   <div>
                     <div className="eyebrow text-[0.55rem]">Email</div>
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="mt-1 block hover:text-gold transition-colors break-all">{CONTACT_EMAIL}</a>
+                    <a href={`mailto:${email}`} className="mt-1 block hover:text-gold transition-colors break-all">{email}</a>
                   </div>
                 </li>
               </ul>
+            </div>
+            <div className="glass rounded-3xl overflow-hidden">
+              <iframe
+                title="Wild Jawai Safari location"
+                src={mapSrc}
+                className="w-full h-64 border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
             <div className="glass-gold rounded-3xl p-7">
               <div className="flex items-center gap-3">
