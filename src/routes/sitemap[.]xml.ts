@@ -26,7 +26,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           supa.from("safari_packages").select("slug,updated_at").eq("published", true),
         ]);
 
-        const rows = [
+        const rows: Array<{ loc: string; lastmod?: string; changefreq?: string; priority?: string }> = [
           ...staticEntries.map((e) => ({ loc: `${BASE_URL}${e.path}`, changefreq: e.changefreq, priority: e.priority })),
           ...(posts ?? []).map((p) => ({
             loc: `${BASE_URL}/blog/${p.slug}`,
