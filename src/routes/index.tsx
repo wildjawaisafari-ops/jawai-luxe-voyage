@@ -709,6 +709,10 @@ function AboutPreview() {
 }
 
 function Reviews() {
+  const { data: dbReviews } = useReviews("manual");
+  const items = dbReviews && dbReviews.length > 0
+    ? dbReviews.map((r: any) => ({ name: r.name, quote: r.quote, location: r.location ?? "" }))
+    : reviews.map((r) => ({ ...r }));
   return (
     <Section
       eyebrow="Guest Stories"
@@ -716,11 +720,11 @@ function Reviews() {
       center
     >
       <div className="grid gap-6 lg:grid-cols-3">
-        {reviews.map((r) => (
-          <figure key={r.name} className="glass rounded-3xl p-8 flex flex-col">
+        {items.slice(0, 3).map((r, i) => (
+          <figure key={`${r.name}-${i}`} className="glass rounded-3xl p-8 flex flex-col">
             <div className="flex gap-1 text-gold">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-current" />
+              {Array.from({ length: 5 }).map((_, si) => (
+                <Star key={si} className="h-4 w-4 fill-current" />
               ))}
             </div>
             <blockquote className="mt-5 text-foreground/90 leading-relaxed font-display text-lg italic">
@@ -738,6 +742,10 @@ function Reviews() {
 }
 
 function FAQPreview() {
+  const { data: dbFaqs } = useFaqs();
+  const items = dbFaqs && dbFaqs.length > 0
+    ? dbFaqs.slice(0, 4).map((f: any) => ({ q: f.question, a: f.answer }))
+    : faqs.slice(0, 4).map((f) => ({ q: f.q, a: f.a }));
   return (
     <Section
       eyebrow="Frequently Asked"
@@ -745,7 +753,7 @@ function FAQPreview() {
       center
     >
       <div className="max-w-3xl mx-auto">
-        <FAQList items={faqs.slice(0, 4)} />
+        <FAQList items={items} />
         <div className="mt-10 text-center">
           <Link to="/faq" className="btn-ghost-gold btn-ghost-gold-hover">
             All questions <ArrowRight className="h-4 w-4" />
@@ -755,6 +763,7 @@ function FAQPreview() {
     </Section>
   );
 }
+
 
 export function FAQList({ items }: { items: ReadonlyArray<{ q: string; a: string }> }) {
   const [open, setOpen] = useState<number | null>(0);
