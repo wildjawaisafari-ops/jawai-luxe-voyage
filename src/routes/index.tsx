@@ -1,8 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark, Cat, ShieldCheck, MessageSquare, FileCheck, CreditCard, Compass } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { useQuery } from "@tanstack/react-query";
 import { Section } from "../components/site/Section";
 import { SafariZoneCard } from "../components/site/PackageCard";
+import { useReviews, useFaqs } from "../lib/public-data";
+import { fetchGoogleReviews } from "../lib/google-reviews.functions";
 import {
   safariZones,
   reviews,
@@ -328,6 +332,36 @@ function BookingProcessSection() {
 }
 
 function GoogleReviews() {
+  const fetchGoogle = useServerFn(fetchGoogleReviews);
+  const { data: googleData } = useQuery({
+    queryKey: ["google_reviews"],
+    queryFn: () => fetchGoogle(),
+    staleTime: 30 * 60_000,
+  });
+  const { data: dbGoogleReviews } = useReviews("google");
+
+  const liveReviews = googleData?.reviews?.length
+    ? googleData.reviews.map((r) => ({
+        name: r.author_name,
+        location: "",
+        stars: r.rating,
+        quote: r.text,
+        time: r.relative_time_description,
+      }))
+    : (dbGoogleReviews ?? []).length > 0
+      ? dbGoogleReviews!.map((r: any) => ({
+          name: r.name,
+          location: r.location ?? "",
+          stars: r.rating,
+          quote: r.quote,
+          time: "",
+        }))
+      : googleReviews.map((r) => ({ ...r }));
+
+  const rating = googleData?.rating ?? 5.0;
+  const totalRatings = googleData?.user_ratings_total;
+  const googleUrl = googleData?.url ?? "https://www.google.com/search?q=Wild+Jawai+Safari";
+
   return (
     <Section
       eyebrow="Google Reviews"
@@ -342,55 +376,50 @@ function GoogleReviews() {
               <Star key={i} className="h-5 w-5 fill-current" />
             ))}
           </div>
-          <span className="font-display text-2xl">5.0</span>
+          <span className="font-display text-2xl">{rating.toFixed(1)}</span>
         </div>
-        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Google Rating · Latest Reviews</p>
+        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+          Google Rating{totalRatings ? ` · ${totalRatings} reviews` : " · Latest Reviews"}
+        </p>
       </div>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {googleReviews.map((r) => (
-          <figure key={r.name} className="glass card-lift rounded-3xl p-6 flex flex-col">
+        {liveReviews.slice(0, 4).map((r, i) => (
+          <figure key={`${r.name}-${i}`} className="glass card-lift rounded-3xl p-6 flex flex-col">
             <div className="flex items-center gap-3">
               <span className="grid h-10 w-10 place-items-center rounded-full glass-gold text-gold font-display text-lg">
                 {r.name.charAt(0)}
               </span>
               <div>
                 <div className="text-sm font-medium">{r.name}</div>
-                <div className="text-[0.65rem] tracking-[0.18em] uppercase text-muted-foreground">{r.location}</div>
+                {r.location && (
+                  <div className="text-[0.65rem] tracking-[0.18em] uppercase text-muted-foreground">{r.location}</div>
+                )}
               </div>
             </div>
             <div className="mt-4 flex gap-0.5 text-gold">
-              {Array.from({ length: r.stars }).map((_, i) => (
-                <Star key={i} className="h-3.5 w-3.5 fill-current" />
+              {Array.from({ length: r.stars }).map((_, si) => (
+                <Star key={si} className="h-3.5 w-3.5 fill-current" />
               ))}
             </div>
             <blockquote className="mt-3 text-sm text-foreground/85 leading-relaxed flex-1">
               "{r.quote}"
             </blockquote>
-            <div className="mt-4 text-[0.7rem] text-muted-foreground">{r.time}</div>
+            {r.time && <div className="mt-4 text-[0.7rem] text-muted-foreground">{r.time}</div>}
           </figure>
         ))}
       </div>
       <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-        <a
-          href="https://www.google.com/search?q=Wild+Jawai+Safari"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-ghost-gold btn-ghost-gold-hover"
-        >
-          <Star className="h-4 w-4" /> View Google Reviews
+        <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold btn-ghost-gold-hover">
+          <Star className="h-4 w-4" /> View on Google
         </a>
-        <a
-          href="https://www.google.com/search?q=Wild+Jawai+Safari+review"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-gold btn-gold-hover"
-        >
-          <Star className="h-4 w-4" /> Write a Google Review
+        <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="btn-gold btn-gold-hover">
+          <Star className="h-4 w-4" /> Write a Review
         </a>
       </div>
     </Section>
   );
 }
+
 
 
 function PackagesPreview() {
@@ -680,6 +709,10 @@ function AboutPreview() {
 }
 
 function Reviews() {
+  const { data: dbReviews } = useReviews("manual");
+  const items = dbReviews && dbReviews.length > 0
+    ? dbReviews.map((r: any) => ({ name: r.name, quote: r.quote, location: r.location ?? "" }))
+    : reviews.map((r) => ({ ...r }));
   return (
     <Section
       eyebrow="Guest Stories"
@@ -687,11 +720,11 @@ function Reviews() {
       center
     >
       <div className="grid gap-6 lg:grid-cols-3">
-        {reviews.map((r) => (
-          <figure key={r.name} className="glass rounded-3xl p-8 flex flex-col">
+        {items.slice(0, 3).map((r, i) => (
+          <figure key={`${r.name}-${i}`} className="glass rounded-3xl p-8 flex flex-col">
             <div className="flex gap-1 text-gold">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-current" />
+              {Array.from({ length: 5 }).map((_, si) => (
+                <Star key={si} className="h-4 w-4 fill-current" />
               ))}
             </div>
             <blockquote className="mt-5 text-foreground/90 leading-relaxed font-display text-lg italic">
@@ -709,6 +742,10 @@ function Reviews() {
 }
 
 function FAQPreview() {
+  const { data: dbFaqs } = useFaqs();
+  const items = dbFaqs && dbFaqs.length > 0
+    ? dbFaqs.slice(0, 4).map((f: any) => ({ q: f.question, a: f.answer }))
+    : faqs.slice(0, 4).map((f) => ({ q: f.q, a: f.a }));
   return (
     <Section
       eyebrow="Frequently Asked"
@@ -716,7 +753,7 @@ function FAQPreview() {
       center
     >
       <div className="max-w-3xl mx-auto">
-        <FAQList items={faqs.slice(0, 4)} />
+        <FAQList items={items} />
         <div className="mt-10 text-center">
           <Link to="/faq" className="btn-ghost-gold btn-ghost-gold-hover">
             All questions <ArrowRight className="h-4 w-4" />
@@ -726,6 +763,7 @@ function FAQPreview() {
     </Section>
   );
 }
+
 
 export function FAQList({ items }: { items: ReadonlyArray<{ q: string; a: string }> }) {
   const [open, setOpen] = useState<number | null>(0);

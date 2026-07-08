@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "../components/site/Section";
+import { useGallery } from "../lib/public-data";
 import photoHero from "../assets/photo-hero.jpg";
 import photoSena from "../assets/photo-sena.jpg";
 import photoJungle from "../assets/photo-jungle.jpg";
@@ -14,20 +15,22 @@ import photoKameshwar from "../assets/photo-kameshwar.jpg";
 import photoDevgiri from "../assets/photo-devgiri.jpg";
 import photoBhadreshvar from "../assets/photo-bhadreshvar.jpg";
 
-const images = [
-  { src: photoHero, alt: "Safari gypsy at Jawai dam shore", w: "md:col-span-2 md:row-span-2" },
-  { src: photoJungle, alt: "Rabari shepherd with goats at sunset" },
-  { src: photoHiTeaLake, alt: "Hi-Tea by Jawai lake with mountain view" },
-  { src: photoBera, alt: "Flamingos on Jawai waters" },
-  { src: photoSena, alt: "Open safari gypsy on Sena granite ridges", w: "md:row-span-2" },
-  { src: photoCrocodile, alt: "Mugger crocodile in Jawai dam" },
-  { src: photoGypsy, alt: "Guest in safari gypsy by Jawai lake" },
-  { src: photoJawaiDam, alt: "Aerial view of Jawai dam and granite islands", w: "md:col-span-2" },
-  { src: photoHiTea, alt: "Hi-Tea picnic table beside Jawai dam" },
-  { src: photoKameshwar, alt: "Pilgrims at Kameshwar Mahadev cave temple" },
-  { src: photoDevgiri, alt: "Devgiri hilltop temple with langur monkeys" },
-  { src: photoBhadreshvar, alt: "Bhadreshvar Mahadev temple in green meadow" },
-  { src: photoBoat, alt: "Boat ride on Jawai dam at dusk" },
+const SITE_URL = "https://jawai-safari.lovable.app";
+
+const fallback = [
+  { url: photoHero, alt_text: "Safari gypsy at Jawai dam shore", w: "md:col-span-2 md:row-span-2" },
+  { url: photoJungle, alt_text: "Rabari shepherd with goats at sunset" },
+  { url: photoHiTeaLake, alt_text: "Hi-Tea by Jawai lake with mountain view" },
+  { url: photoBera, alt_text: "Flamingos on Jawai waters" },
+  { url: photoSena, alt_text: "Open safari gypsy on Sena granite ridges", w: "md:row-span-2" },
+  { url: photoCrocodile, alt_text: "Mugger crocodile in Jawai dam" },
+  { url: photoGypsy, alt_text: "Guest in safari gypsy by Jawai lake" },
+  { url: photoJawaiDam, alt_text: "Aerial view of Jawai dam and granite islands", w: "md:col-span-2" },
+  { url: photoHiTea, alt_text: "Hi-Tea picnic table beside Jawai dam" },
+  { url: photoKameshwar, alt_text: "Pilgrims at Kameshwar Mahadev cave temple" },
+  { url: photoDevgiri, alt_text: "Devgiri hilltop temple with langur monkeys" },
+  { url: photoBhadreshvar, alt_text: "Bhadreshvar Mahadev temple in green meadow" },
+  { url: photoBoat, alt_text: "Boat ride on Jawai dam at dusk" },
 ];
 
 export const Route = createFileRoute("/gallery")({
@@ -37,15 +40,20 @@ export const Route = createFileRoute("/gallery")({
       { name: "description", content: "Real HD photos from Wild Jawai Safari — Jawai dam, flamingos, crocodiles, safari gypsies, Rabari shepherds and sacred temples of Jawai, Rajasthan." },
       { property: "og:title", content: "Jawai Leopard Safari Gallery — Wild Jawai Safari" },
       { property: "og:description", content: "A visual journey through Jawai's wildlife, granite hills and sacred temples." },
-      { property: "og:url", content: "https://jawai-luxe-voyage.lovable.app/gallery" },
+      { property: "og:url", content: `${SITE_URL}/gallery` },
       { property: "og:image", content: photoHero },
     ],
-    links: [{ rel: "canonical", href: "https://jawai-luxe-voyage.lovable.app/gallery" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/gallery` }],
   }),
   component: GalleryPage,
 });
 
 function GalleryPage() {
+  const { data } = useGallery();
+  const images = data && data.length > 0
+    ? data.map((g) => ({ url: g.url, alt_text: g.alt_text || g.title || "Jawai Safari photo", w: undefined as string | undefined }))
+    : fallback;
+
   return (
     <>
       <PageHeader
@@ -59,14 +67,14 @@ function GalleryPage() {
           {images.map((g, i) => (
             <figure key={i} className={`relative overflow-hidden rounded-2xl group ${g.w ?? ""}`}>
               <img
-                src={g.src}
-                alt={g.alt}
+                src={g.url}
+                alt={g.alt_text}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
               />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
               <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-background/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-xs font-medium text-gold-soft">{g.alt}</span>
+                <span className="text-xs font-medium text-gold-soft">{g.alt_text}</span>
               </figcaption>
             </figure>
           ))}
