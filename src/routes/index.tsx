@@ -1,7 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Star, Plus, Minus, MapPin, Phone, Mail, Sparkles, Eye, Users, Leaf, MessageCircle, Truck, Hotel, Landmark, Cat, ShieldCheck, MessageSquare, FileCheck, CreditCard, Compass } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { useQuery } from "@tanstack/react-query";
 import { Section } from "../components/site/Section";
+import { SafariZoneCard } from "../components/site/PackageCard";
+import { useReviews, useFaqs } from "../lib/public-data";
+import { fetchGoogleReviews } from "../lib/google-reviews.functions";
 import { SafariZoneCard } from "../components/site/PackageCard";
 import {
   safariZones,
