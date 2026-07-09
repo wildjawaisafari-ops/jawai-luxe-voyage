@@ -21,9 +21,10 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/contact", changefreq: "monthly", priority: "0.6" },
         ];
 
-        const [{ data: posts }, { data: packages }] = await Promise.all([
+        const [{ data: posts }, { data: packages }, { data: pages }] = await Promise.all([
           supa.from("blog_posts").select("slug,updated_at,published_at").eq("status", "published"),
           supa.from("safari_packages").select("slug,updated_at").eq("published", true),
+          supa.from("content_pages").select("slug,updated_at").eq("published", true),
         ]);
 
         const rows: Array<{ loc: string; lastmod?: string; changefreq?: string; priority?: string }> = [
@@ -39,6 +40,12 @@ export const Route = createFileRoute("/sitemap.xml")({
             lastmod: p.updated_at ?? undefined,
             changefreq: "monthly",
             priority: "0.7",
+          })),
+          ...(pages ?? []).map((p) => ({
+            loc: `${BASE_URL}/${p.slug}`,
+            lastmod: p.updated_at ?? undefined,
+            changefreq: "yearly",
+            priority: "0.4",
           })),
         ];
 

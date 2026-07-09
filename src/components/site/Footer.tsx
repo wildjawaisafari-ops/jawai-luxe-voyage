@@ -149,6 +149,12 @@ export function Footer() {
       <div className="relative border-t" style={{ borderColor: "oklch(1 0 0 / 0.08)" }}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs hero-fg-muted">
           <p>© {new Date().getFullYear()} Wild Jawai Safari. All rights reserved.</p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+            <Link to="/$slug" params={{ slug: "privacy-policy" }} className="hover:text-[color:var(--gold-soft)] transition-colors">Privacy Policy</Link>
+            <Link to="/$slug" params={{ slug: "terms-and-conditions" }} className="hover:text-[color:var(--gold-soft)] transition-colors">Terms</Link>
+            <Link to="/$slug" params={{ slug: "refund-policy" }} className="hover:text-[color:var(--gold-soft)] transition-colors">Refund Policy</Link>
+            <Link to="/$slug" params={{ slug: "cancellation-policy" }} className="hover:text-[color:var(--gold-soft)] transition-colors">Cancellation</Link>
+          </div>
           <p className="font-display tracking-[0.3em] text-sm" style={{ color: "var(--gold-soft)" }}>
             Tread softly · Travel wild
           </p>
