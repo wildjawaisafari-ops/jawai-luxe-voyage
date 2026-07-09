@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { PageHeader, Section } from "../components/site/Section";
+import photoHero from "../assets/photo-hero.jpg";
 
 const SITE_URL = "https://jawai-safari.lovable.app";
 
@@ -58,7 +59,7 @@ function ContentPageView() {
   const { page } = Route.useLoaderData();
   return (
     <>
-      <PageHeader eyebrow="Wild Jawai Safari" title={page.title} />
+      <PageHeader eyebrow="Wild Jawai Safari" title={page.title} image={photoHero} />
       <Section>
         <article
           className="prose prose-lg max-w-3xl mx-auto prose-headings:font-display prose-a:text-gold"
