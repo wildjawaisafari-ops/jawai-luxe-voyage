@@ -141,16 +141,28 @@ function Home() {
 
 
 function Hero() {
+  const { data: settings } = useSiteSettings();
+  const heroImg = settings?.hero_image_url || photoHero;
+  const heroVideo = settings?.hero_video_url || null;
+  const heroTitle = settings?.hero_title;
+  const heroSubtitle = settings?.hero_subtitle;
+  const ctaPrimary = settings?.hero_cta_primary_label || "Book Now";
+  const ctaSecondary = settings?.hero_cta_secondary_label || "WhatsApp";
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <img
-          src={photoHero}
-          alt="Safari gypsy parked on granite shore of Jawai lake at golden hour"
-          width={1920}
-          height={1280}
-          className="h-full w-full object-cover scale-105 animate-fade-in-slow"
-        />
+        {heroVideo ? (
+          <video src={heroVideo} autoPlay muted loop playsInline poster={heroImg}
+            className="h-full w-full object-cover scale-105" />
+        ) : (
+          <img
+            src={heroImg}
+            alt="Safari gypsy parked on granite shore of Jawai lake at golden hour"
+            width={1920}
+            height={1280}
+            className="h-full w-full object-cover scale-105 animate-fade-in-slow"
+          />
+        )}
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       </div>
 
@@ -161,13 +173,10 @@ function Hero() {
             <span className="eyebrow" style={{ color: "var(--gold-soft)" }}>Jawai · Rajasthan · India</span>
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] animate-fade-up delay-1 hero-fg">
-            Best Jawai Leopard Safari
-            <br />
-            in <span className="text-gradient-gold italic">Rajasthan</span>
+            {heroTitle ? heroTitle : (<>Best Jawai Leopard Safari<br />in <span className="text-gradient-gold italic">Rajasthan</span></>)}
           </h1>
           <p className="mt-7 text-base sm:text-lg hero-fg-muted max-w-xl leading-relaxed animate-fade-up delay-2">
-            Experience unforgettable Jawai Safari adventures with experienced local guides —
-            private morning &amp; evening gypsy drives, expert trackers and instant WhatsApp booking.
+            {heroSubtitle || "Experience unforgettable Jawai Safari adventures with experienced local guides — private morning & evening gypsy drives, expert trackers and instant WhatsApp booking."}
           </p>
           <div className="mt-9 flex flex-wrap gap-3 animate-fade-up delay-3">
             <a
@@ -176,7 +185,7 @@ function Hero() {
               rel="noopener noreferrer"
               className="btn-gold btn-gold-hover"
             >
-              Book Now <ArrowRight className="h-4 w-4" />
+              {ctaPrimary} <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href={whatsappUrl(heroBookMsg)}
@@ -190,7 +199,7 @@ function Hero() {
                 backdropFilter: "blur(10px)",
               }}
             >
-              <MessageCircle className="h-4 w-4" /> WhatsApp
+              <MessageCircle className="h-4 w-4" /> {ctaSecondary}
             </a>
             <a
               href={`tel:${PHONE_TEL}`}
