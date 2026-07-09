@@ -16,12 +16,14 @@ export const Route = createFileRoute("/_authenticated/admin")({
 
 const tabs: { to: string; label: string; exact?: boolean }[] = [
   { to: "/admin", label: "Dashboard", exact: true },
-  { to: "/admin/settings", label: "Site Settings" },
+  { to: "/admin/inquiries", label: "Inquiries" },
   { to: "/admin/packages", label: "Packages" },
   { to: "/admin/blogs", label: "Blogs" },
   { to: "/admin/gallery", label: "Gallery" },
   { to: "/admin/faqs", label: "FAQs" },
   { to: "/admin/reviews", label: "Reviews" },
+  { to: "/admin/pages", label: "Pages" },
+  { to: "/admin/settings", label: "Site Settings" },
 ];
 
 function AdminLayout() {
