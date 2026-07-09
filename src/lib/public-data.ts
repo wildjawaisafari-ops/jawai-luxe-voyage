@@ -7,6 +7,7 @@ export type SiteSettings = {
   phone_number: string;
   email: string;
   address: string;
+  business_hours: string | null;
   map_lat: number | null;
   map_lng: number | null;
   google_place_id: string | null;
@@ -16,11 +17,31 @@ export type SiteSettings = {
   twitter_url: string | null;
   hero_title: string;
   hero_subtitle: string;
+  hero_image_url: string | null;
+  hero_video_url: string | null;
+  hero_cta_primary_label: string | null;
+  hero_cta_secondary_label: string | null;
   seo_title: string;
   seo_description: string;
   seo_keywords: string;
   og_image_url: string | null;
 };
+
+export async function submitInquiry(input: {
+  name: string; email?: string; phone?: string; travel_date?: string;
+  guests?: number; package?: string; message?: string; source?: string;
+}) {
+  const { error } = await supabase.from("inquiries").insert(input);
+  return { error };
+}
+
+export async function trackEvent(event: string, meta?: Record<string, any>) {
+  try {
+    await supabase.from("analytics_events").insert({
+      event, path: typeof window !== "undefined" ? window.location.pathname : null, meta: meta ?? null,
+    });
+  } catch {}
+}
 
 export function useSiteSettings() {
   return useQuery({

@@ -4,7 +4,8 @@ import { MessageCircle, Mail, MapPin, Phone, Truck } from "lucide-react";
 import { PageHeader, Section } from "../components/site/Section";
 import photoGypsy from "../assets/photo-gypsy.jpg";
 import { WHATSAPP_DISPLAY, CONTACT_EMAIL, whatsappUrl } from "../lib/site-data";
-import { useSiteSettings, whatsappHref, displayPhone } from "../lib/public-data";
+import { useSiteSettings, whatsappHref, displayPhone, submitInquiry, trackEvent } from "../lib/public-data";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -38,8 +39,17 @@ function ContactPage() {
     setForm((f) => ({ ...f, [k]: v }));
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const guestsNum = form.guests ? parseInt(form.guests.replace(/\D/g, ""), 10) || null : null;
+    await submitInquiry({
+      name: form.name, email: form.email || undefined, phone: form.phone || undefined,
+      guests: guestsNum ?? undefined,
+      message: [form.dates && `Dates: ${form.dates}`, form.message].filter(Boolean).join("\n"),
+      source: "contact_form",
+    });
+    trackEvent("inquiry_submit", { form: "contact" });
+    toast.success("Enquiry received — opening WhatsApp");
     const lines = [
       "Hello Wild Jawai Safari, I would like to plan a safari.", "",
       form.name && `Name: ${form.name}`,

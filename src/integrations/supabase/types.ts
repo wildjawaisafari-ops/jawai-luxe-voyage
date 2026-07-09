@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          created_at: string
+          event: string
+          id: string
+          meta: Json | null
+          path: string | null
+        }
+        Insert: {
+          created_at?: string
+          event: string
+          id?: string
+          meta?: Json | null
+          path?: string | null
+        }
+        Update: {
+          created_at?: string
+          event?: string
+          id?: string
+          meta?: Json | null
+          path?: string | null
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author_id: string | null
@@ -66,6 +90,42 @@ export type Database = {
           slug?: string
           status?: Database["public"]["Enums"]["post_status"]
           tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      content_pages: {
+        Row: {
+          body_html: string | null
+          created_at: string
+          id: string
+          published: boolean
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body_html?: string | null
+          created_at?: string
+          id?: string
+          published?: boolean
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body_html?: string | null
+          created_at?: string
+          id?: string
+          published?: boolean
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
           title?: string
           updated_at?: string
         }
@@ -134,6 +194,51 @@ export type Database = {
           title?: string | null
           updated_at?: string
           url?: string
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          created_at: string
+          email: string | null
+          guests: number | null
+          id: string
+          message: string | null
+          name: string
+          package: string | null
+          phone: string | null
+          source: string | null
+          status: string
+          travel_date: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          guests?: number | null
+          id?: string
+          message?: string | null
+          name: string
+          package?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: string
+          travel_date?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          guests?: number | null
+          id?: string
+          message?: string | null
+          name?: string
+          package?: string | null
+          phone?: string | null
+          source?: string | null
+          status?: string
+          travel_date?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -239,11 +344,16 @@ export type Database = {
       site_settings: {
         Row: {
           address: string
+          business_hours: string | null
           email: string
           facebook_url: string | null
           google_place_id: string | null
+          hero_cta_primary_label: string | null
+          hero_cta_secondary_label: string | null
+          hero_image_url: string | null
           hero_subtitle: string
           hero_title: string
+          hero_video_url: string | null
           id: string
           instagram_url: string | null
           map_lat: number | null
@@ -260,11 +370,16 @@ export type Database = {
         }
         Insert: {
           address?: string
+          business_hours?: string | null
           email?: string
           facebook_url?: string | null
           google_place_id?: string | null
+          hero_cta_primary_label?: string | null
+          hero_cta_secondary_label?: string | null
+          hero_image_url?: string | null
           hero_subtitle?: string
           hero_title?: string
+          hero_video_url?: string | null
           id?: string
           instagram_url?: string | null
           map_lat?: number | null
@@ -281,11 +396,16 @@ export type Database = {
         }
         Update: {
           address?: string
+          business_hours?: string | null
           email?: string
           facebook_url?: string | null
           google_place_id?: string | null
+          hero_cta_primary_label?: string | null
+          hero_cta_secondary_label?: string | null
+          hero_image_url?: string | null
           hero_subtitle?: string
           hero_title?: string
+          hero_video_url?: string | null
           id?: string
           instagram_url?: string | null
           map_lat?: number | null

@@ -24,25 +24,9 @@ function SettingsPage() {
   async function save() {
     if (!s) return;
     setSaving(true);
-    const { error } = await supabase.from("site_settings").update({
-      whatsapp_number: s.whatsapp_number,
-      phone_number: s.phone_number,
-      email: s.email,
-      address: s.address,
-      map_lat: s.map_lat,
-      map_lng: s.map_lng,
-      google_place_id: s.google_place_id,
-      instagram_url: s.instagram_url,
-      facebook_url: s.facebook_url,
-      youtube_url: s.youtube_url,
-      twitter_url: s.twitter_url,
-      hero_title: s.hero_title,
-      hero_subtitle: s.hero_subtitle,
-      seo_title: s.seo_title,
-      seo_description: s.seo_description,
-      seo_keywords: s.seo_keywords,
-      og_image_url: s.og_image_url,
-    }).eq("id", s.id);
+    const { id, created_at, updated_at, ...payload } = s;
+    void created_at; void updated_at;
+    const { error } = await (supabase.from("site_settings") as any).update(payload).eq("id", id);
     setSaving(false);
     if (error) toast.error(error.message);
     else toast.success("Settings saved");
@@ -60,6 +44,7 @@ function SettingsPage() {
           <Field label="Phone Number"><Input {...bind("phone_number")} /></Field>
           <Field label="Email"><Input {...bind("email")} /></Field>
           <Field label="Address"><Textarea {...bind("address")} rows={2} /></Field>
+          <Field label="Business Hours"><Textarea {...bind("business_hours")} rows={2} placeholder="Season: October — April · Sunrise & Sunset drives" /></Field>
           <div className="grid grid-cols-2 gap-4">
             <Field label="Map Latitude"><Input {...bind("map_lat")} type="number" step="any" /></Field>
             <Field label="Map Longitude"><Input {...bind("map_lng")} type="number" step="any" /></Field>
@@ -77,6 +62,12 @@ function SettingsPage() {
         <Section title="Homepage Hero">
           <Field label="Hero Title"><Input {...bind("hero_title")} /></Field>
           <Field label="Hero Subtitle"><Textarea {...bind("hero_subtitle")} rows={2} /></Field>
+          <Field label="Hero Background Image URL (optional — overrides default)"><Input {...bind("hero_image_url")} /></Field>
+          <Field label="Hero Background Video URL (optional — mp4)"><Input {...bind("hero_video_url")} /></Field>
+          <div className="grid grid-cols-2 gap-4">
+            <Field label="Primary CTA Label"><Input {...bind("hero_cta_primary_label")} placeholder="Book Now" /></Field>
+            <Field label="Secondary CTA Label"><Input {...bind("hero_cta_secondary_label")} placeholder="WhatsApp" /></Field>
+          </div>
         </Section>
 
         <Section title="SEO Defaults">
