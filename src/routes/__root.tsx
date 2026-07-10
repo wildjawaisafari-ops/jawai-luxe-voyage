@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
+import { useSiteSettings as useSiteSettingsSafe } from "../lib/public-data";
 
 function NotFoundComponent() {
   return (
@@ -154,13 +155,36 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col">
-        <Nav />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+      <SiteChrome />
     </QueryClientProvider>
+  );
+}
+
+function SiteChrome() {
+  const { data: settings } = useSiteSettingsSafe();
+
+  useEffect(() => {
+    if (!settings?.favicon_url) return;
+    let link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+    if (!link) { link = document.createElement("link"); link.rel = "icon"; document.head.appendChild(link); }
+    link.href = settings.favicon_url;
+  }, [settings?.favicon_url]);
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      {settings?.homepage_banner_enabled && settings?.homepage_banner_text && (
+        <a
+          href={settings.homepage_banner_url || "#"}
+          className="block bg-[color:var(--gold)] text-black text-center text-xs sm:text-sm py-2 px-4 font-medium tracking-wide hover:opacity-90 transition"
+        >
+          {settings.homepage_banner_text}
+        </a>
+      )}
+      <Nav />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 }
