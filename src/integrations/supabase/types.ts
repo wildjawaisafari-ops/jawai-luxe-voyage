@@ -134,6 +134,7 @@ export type Database = {
       faqs: {
         Row: {
           answer: string
+          category: string | null
           created_at: string
           id: string
           published: boolean
@@ -143,6 +144,7 @@ export type Database = {
         }
         Insert: {
           answer: string
+          category?: string | null
           created_at?: string
           id?: string
           published?: boolean
@@ -152,6 +154,7 @@ export type Database = {
         }
         Update: {
           answer?: string
+          category?: string | null
           created_at?: string
           id?: string
           published?: boolean
@@ -164,6 +167,7 @@ export type Database = {
       gallery_images: {
         Row: {
           alt_text: string
+          caption: string | null
           category: Database["public"]["Enums"]["gallery_category"]
           created_at: string
           id: string
@@ -175,6 +179,7 @@ export type Database = {
         }
         Insert: {
           alt_text?: string
+          caption?: string | null
           category?: Database["public"]["Enums"]["gallery_category"]
           created_at?: string
           id?: string
@@ -186,6 +191,7 @@ export type Database = {
         }
         Update: {
           alt_text?: string
+          caption?: string | null
           category?: Database["public"]["Enums"]["gallery_category"]
           created_at?: string
           id?: string
@@ -245,9 +251,11 @@ export type Database = {
       reviews: {
         Row: {
           created_at: string
+          featured: boolean
           id: string
           location: string | null
           name: string
+          photo_url: string | null
           published: boolean
           quote: string
           rating: number
@@ -257,9 +265,11 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          featured?: boolean
           id?: string
           location?: string | null
           name: string
+          photo_url?: string | null
           published?: boolean
           quote: string
           rating?: number
@@ -269,9 +279,11 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          featured?: boolean
           id?: string
           location?: string | null
           name?: string
+          photo_url?: string | null
           published?: boolean
           quote?: string
           rating?: number
@@ -347,6 +359,7 @@ export type Database = {
           business_hours: string | null
           email: string
           facebook_url: string | null
+          favicon_url: string | null
           google_place_id: string | null
           hero_cta_primary_label: string | null
           hero_cta_secondary_label: string | null
@@ -354,8 +367,12 @@ export type Database = {
           hero_subtitle: string
           hero_title: string
           hero_video_url: string | null
+          homepage_banner_enabled: boolean
+          homepage_banner_text: string | null
+          homepage_banner_url: string | null
           id: string
           instagram_url: string | null
+          logo_url: string | null
           map_lat: number | null
           map_lng: number | null
           og_image_url: string | null
@@ -373,6 +390,7 @@ export type Database = {
           business_hours?: string | null
           email?: string
           facebook_url?: string | null
+          favicon_url?: string | null
           google_place_id?: string | null
           hero_cta_primary_label?: string | null
           hero_cta_secondary_label?: string | null
@@ -380,8 +398,12 @@ export type Database = {
           hero_subtitle?: string
           hero_title?: string
           hero_video_url?: string | null
+          homepage_banner_enabled?: boolean
+          homepage_banner_text?: string | null
+          homepage_banner_url?: string | null
           id?: string
           instagram_url?: string | null
+          logo_url?: string | null
           map_lat?: number | null
           map_lng?: number | null
           og_image_url?: string | null
@@ -399,6 +421,7 @@ export type Database = {
           business_hours?: string | null
           email?: string
           facebook_url?: string | null
+          favicon_url?: string | null
           google_place_id?: string | null
           hero_cta_primary_label?: string | null
           hero_cta_secondary_label?: string | null
@@ -406,8 +429,12 @@ export type Database = {
           hero_subtitle?: string
           hero_title?: string
           hero_video_url?: string | null
+          homepage_banner_enabled?: boolean
+          homepage_banner_text?: string | null
+          homepage_banner_url?: string | null
           id?: string
           instagram_url?: string | null
+          logo_url?: string | null
           map_lat?: number | null
           map_lng?: number | null
           og_image_url?: string | null
