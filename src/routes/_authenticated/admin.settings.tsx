@@ -39,6 +39,20 @@ function SettingsPage() {
     <div className="max-w-3xl">
       <h1 className="font-display text-3xl mb-6">Site Settings</h1>
       <div className="bg-white rounded-2xl p-6 border border-black/5 space-y-6">
+        <Section title="Branding">
+          <Field label="Logo URL (shown in header)"><Input {...bind("logo_url")} placeholder="https://…/logo.png" /></Field>
+          <Field label="Favicon URL (browser tab icon, .png or .ico)"><Input {...bind("favicon_url")} /></Field>
+        </Section>
+
+        <Section title="Homepage Banner (announcement strip)">
+          <div className="flex items-center gap-3">
+            <input type="checkbox" checked={!!s.homepage_banner_enabled} onChange={(e) => setS({ ...s, homepage_banner_enabled: e.target.checked })} />
+            <span className="text-sm">Show banner at top of site</span>
+          </div>
+          <Field label="Banner Text"><Input {...bind("homepage_banner_text")} placeholder="Season 2026 bookings open — WhatsApp for early-bird rates" /></Field>
+          <Field label="Banner Link (optional)"><Input {...bind("homepage_banner_url")} placeholder="/packages" /></Field>
+        </Section>
+
         <Section title="Contact & Booking">
           <Field label="WhatsApp Number (with country code, no +)" ><Input {...bind("whatsapp_number")} placeholder="919256928266" /></Field>
           <Field label="Phone Number"><Input {...bind("phone_number")} /></Field>

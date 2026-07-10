@@ -43,13 +43,19 @@ export function Nav() {
           }`}
         >
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="grid h-9 w-9 place-items-center rounded-full glass-gold">
-              <span className="font-display text-gold text-lg leading-none">W</span>
-            </span>
-            <div className="leading-tight">
-              <div className="font-display text-base sm:text-lg tracking-wide">Wild Jawai</div>
-              <div className="eyebrow text-[0.55rem] tracking-[0.3em]">Safari</div>
-            </div>
+            {settings?.logo_url ? (
+              <img src={settings.logo_url} alt="Wild Jawai Safari" className="h-10 w-auto object-contain" />
+            ) : (
+              <>
+                <span className="grid h-9 w-9 place-items-center rounded-full glass-gold">
+                  <span className="font-display text-gold text-lg leading-none">W</span>
+                </span>
+                <div className="leading-tight">
+                  <div className="font-display text-base sm:text-lg tracking-wide">Wild Jawai</div>
+                  <div className="eyebrow text-[0.55rem] tracking-[0.3em]">Safari</div>
+                </div>
+              </>
+            )}
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">

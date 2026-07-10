@@ -25,6 +25,11 @@ export type SiteSettings = {
   seo_description: string;
   seo_keywords: string;
   og_image_url: string | null;
+  logo_url: string | null;
+  favicon_url: string | null;
+  homepage_banner_text: string | null;
+  homepage_banner_url: string | null;
+  homepage_banner_enabled: boolean | null;
 };
 
 export async function submitInquiry(input: {

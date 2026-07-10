@@ -10,9 +10,10 @@ function FaqsAdmin() {
     <CrudTable
       table="faqs"
       title="FAQs"
-      defaults={{ published: true, sort_order: 0 }}
+      defaults={{ published: true, sort_order: 0, category: "General" }}
       columns={[
         { key: "question", label: "Question" },
+        { key: "category", label: "Category" },
         { key: "sort_order", label: "Order" },
         { key: "published", label: "Published" },
       ]}
@@ -20,6 +21,7 @@ function FaqsAdmin() {
       fields={[
         { key: "question", label: "Question", type: "text" },
         { key: "answer", label: "Answer", type: "textarea", rows: 5 },
+        { key: "category", label: "Category (e.g. General, Booking, Safari, Stay)", type: "text" },
         { key: "sort_order", label: "Sort Order", type: "number" },
         { key: "published", label: "Published", type: "bool" },
       ]}

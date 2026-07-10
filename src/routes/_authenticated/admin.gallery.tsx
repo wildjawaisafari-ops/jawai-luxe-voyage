@@ -28,6 +28,7 @@ function GalleryAdmin() {
       fields={[
         { key: "url", label: "Image URL", type: "url" },
         { key: "title", label: "Title", type: "text" },
+        { key: "caption", label: "Caption (shown under image)", type: "textarea", rows: 2 },
         { key: "alt_text", label: "Alt Text (for SEO & accessibility)", type: "text" },
         { key: "category", label: "Category", type: "select", options: CATEGORIES },
         { key: "sort_order", label: "Sort Order", type: "number" },
